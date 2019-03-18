@@ -1,0 +1,1 @@
+define(["apps/hide"],function(e){return{securityHide:function(){$("#pop_validate_code_error").hide(),e.hide("#dl_security"),$('input[name="validate_code"]').val(""),$("#da").val("")}}});

@@ -1,0 +1,1 @@
+define(function(){return{_getCookieValue:function(e,n){return(n=document.cookie.match("(^|;)\\s*"+e+"\\s*=\\s*([^;]+)"))?n.pop():""}}});

@@ -1,0 +1,1 @@
+define(["apps/_getCookieValue"],function(n){return{_verificaUser:function(){if(n._getCookieValue("UserName"))return!0;var e="https://passport.csdn.net/account/login?from="+encodeURI(location.href);return window.location=e,!1}}});

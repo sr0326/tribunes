@@ -1,56 +1,110 @@
 <!DOCTYPE html>
-<!-- saved from url=(0026)https://download.csdn.net/ -->
+<!-- saved from url=(0036)https://download.csdn.net/my/uploads -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="baidu-site-verification" content="0ZEYmMYLRD">
+<style>
+.sms-box {
+	position: fixed;
+	display: none;
+	left: 50%;
+	top: 50%;
+	z-index: 10000;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+}
 
-<title>CSDN下载-IT资源大本营</title>
+.sms-mark {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+</style>
+<style>
+.login-box {
+	position: fixed;
+	display: none;
+	left: 50%;
+	top: 50%;
+	z-index: 10000;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+}
+
+.login-mark {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+</style>
+<title>上传资源-我的资源-下载频道-CSDN.NET</title>
 <meta content="always" name="referrer">
+
 <meta name="author" content="CSDN">
 <meta name="Copyright" content="CSDN">
-<meta name="apple-mobile-web-app-status-bar-style" content="yes">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script type="text/javascript" async=""
+	src="../mydown_files/auto_dup"></script>
 <link rel="apple-touch-icon"
 	href="https://csdnimg.cn/public/favicon.ico">
-<script type="text/javascript" async="" src="../files/auto_dup"></script>
-<script src="../files/hm.js.下载"></script>
-<script type="text/javascript" src="../files/tingyun-rum-download.js.下载"></script>
+<link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
 <script type="text/javascript">
 	var dl_cdn_url = '//csdnimg.cn/release/download';
-	var dl_cdn_version = '201812141441';
+	var query_tag = '';
+	var needInsertBaidu = false;
+	var dl_cdn_version = '201812141445';
 </script>
-
-<link rel="stylesheet" href="../files/download_new.css">
-
-<link rel="stylesheet" href="../files/content_toolbar.css">
-<link rel="stylesheet" href="../files/bootstrap.css">
-<link rel="stylesheet" href="../files/common.css">
-<link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
-<link href="../files/quake.slider.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="../files/font-awesome.min.css">
-<script src="../files/libs.js.下载" type="text/javascript"></script>
-<link rel="stylesheet" href="../files/download_index.css">
-<link rel="canonical" href="http://download.csdn.net/">
-<link rel="stylesheet" type="text/css" href="../files/goTop.min.css">
-<script type="text/javascript" charset="utf-8"
-	src="../files/tracking-1.0.2.js.下载"></script>
-<!-- <script type="text/javascript" charset="utf-8"
-	src="../files/main-1.0.2.js.下载"></script>
-<script type="text/javascript" src="../files/check-adb.js.下载"></script>
-<script type="text/javascript" src="../files/baidu_opensug-1.0.0.js.下载"></script> -->
-<script src="../files/get_ads.php" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="../files/check-adb.css">
-<script type="text/javascript" src="../files/fuckadblock.min.js.下载"></script>
-<style type="text/css">
-	.seled{background-color: lightgray;text-decoration: none;}
-</style>
+<link rel="stylesheet"
+	href="../mydown_files/content_toolbar.css">
+<link rel="stylesheet"
+	href="../mydown_files/font-awesome.min.css">
+<link rel="stylesheet"
+	href="../mydown_files/bootstrap.css">
+<!--<link rel="stylesheet" href="/css/iconfont.css?/v=">-->
+<link rel="stylesheet" href="../mydown_files/common.css">
+<link rel="stylesheet"
+	href="../mydown_files/download_new.css">
+<link rel="canonical" href="http://download.csdn.net/my/uploads">
+<link rel="stylesheet" type="text/css"
+	href="../mydown_files/goTop.min.css">
+<link rel="stylesheet"
+	href="../mydown_files/user-sms-verification.css">
+<link rel="stylesheet" type="text/css"
+	href="../mydown_files/check-adb.css">
+<style type="text/css"></style>
+<style type="text/css"></style>
+<style type="text/css"></style>
+<style type="text/css"></style>
+<style type="text/css"></style>
+<style type="text/css"></style>
+<style type="text/css"></style>
+<style type="text/css"></style>
+<style type="text/css"></style>
+<style type="text/css"></style>
+<style type="text/css"></style>
 </head>
 <body>
 	<div id="BAIDU_DUP_fp_wrapper"
 		style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;">
-		<iframe id="BAIDU_DUP_fp_iframe" src="../files/o.html"
+		<iframe id="BAIDU_DUP_fp_iframe"
+			src="../mydown_files/o.html"
 			style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe>
 	</div>
 	<svg aria-hidden="true"
@@ -1801,7 +1855,7 @@
 					title="首页" style="margin-left:0">首页</a></li>
 				<li><a href="https://blog.csdn.net/" class="toolbar_to_feed"
 					title="博客">博客</a></li>
-				<li><a th:href="@{/downfilec/queryDownFile}" title="下载"
+				<li><a href="https://download.csdn.net/" title="下载"
 					class="active">下载</a></li>
 				<li><a href="https://bbs.csdn.net/" title="论坛">论坛</a></li>
 			</ul>
@@ -1809,8 +1863,9 @@
 				<ul class="btns">
 					<li
 						class="toolbar-tracking csdn-tracking-statistics tracking-click"
-						data-mod="popu_369"><a href="https://download.csdn.net/#"
-						style="padding:0" target="_blank"></a></li>
+						data-mod="popu_369"><a
+						href="https://download.csdn.net/my/uploads#" style="padding:0"
+						target="_blank"></a></li>
 					<li>
 						<div class="search_bar csdn-tracking-statistics tracking-click"
 							data-mod="popu_366">
@@ -1823,22 +1878,25 @@
 						</div>
 					</li>
 					<li class="write-bolg-btn csdn-tracking-statistics tracking-click"
-						data-mod="popu_370"><a class=""
-						href="https://mp.csdn.net/postedit" target="_blank" id="blogClick"><svg
-								class="toolbar-icon" aria-hidden="true">
+						data-mod="popu_370"
+						data-track-click="{&quot;mod&quot;:&quot;popu_762&quot;,&quot;con&quot;:&quot;,https://mp.csdn.net/postedit,-&quot;}"><a
+						class="" href="https://mp.csdn.net/postedit" target="_blank"
+						id="blogClick"><svg class="toolbar-icon" aria-hidden="true">
 								<use xlink:href="#xieboke1"></use></svg><span>写博客</span></a>
 						<div class="blog_tip_box" style="display: block;">快来写博客吧
 							ヽ(✿ﾟ▽ﾟ)ノ</div></li>
 					<li class="gitChat upload msgBox" id="msgBox"><a
 						target="_blank" class="" href="https://i.csdn.net/#/msg/index"><img
-							src="../files/message-icon.png" alt="" class="message"><span>消息</span>
-							<div class="toolbar-circle" id="msg-circle"></div></a>
+							src="../mydown_files/message-icon.png" alt=""
+							class="message"><span>消息</span>
+						<div class="toolbar-circle" id="msg-circle"></div></a>
 						<div class="msgList" id="msgList">
 							<a href="https://i.csdn.net/#/msg/index">评论<em
 								class="comment"></em></a> <a
 								href="https://i.csdn.net/#/msg/attention">关注<em
 								class="follow"></em></a> <a href="https://i.csdn.net/#/msg/like">点赞<em
-								class="thumb_up"></em></a> <a
+								class="thumb_up"></em></a> <a href="https://i.csdn.net/#/msg/answer">回答<em
+								class="invitation"></em></a> <a
 								href="https://i.csdn.net/#/msg/notice">系统通知<em
 								class="system"></em></a>
 						</div></li>
@@ -1848,7 +1906,7 @@
 					<li class="userLogin">
 						<div class="loginCenter">
 							<a href="https://i.csdn.net/" target="_blank"><img
-								class="login_img" src="../files/2_qq_41594083"></a>
+								class="login_img" src="../mydown_files/2_sr9089"></a>
 						</div>
 						<div class="userControl">
 							<div class="bord">
@@ -1872,7 +1930,7 @@
 							<div class="bord">
 								<div>
 									<i class="pull_icon pull_icon5"></i><a
-										href="https://blog.csdn.net/qq_41594083" target="_blank">我的博客</a>
+										href="https://blog.csdn.net/sr9089" target="_blank">我的博客</a>
 								</div>
 								<div>
 									<i class="pull_icon pull_icon6"></i><a
@@ -1914,246 +1972,275 @@
 			</div>
 		</div>
 	</div>
-	
-	<script type="text/javascript" src="../files/content_toolbar.js.下载"></script>
-	<script src="../files/notify.js.下载"></script>
-	<script src="../files/main.js.下载"></script>
-	<script class="toolbar-s" type="text/javascript" src="../files/iconfont.js.下载"></script>
-
-
 	<div class="news-nav">
 		<div class="container clearfix">
 			<div class="nav-bar">
-				<a th:href="@{/downfilec/queryDownFile}" class="current">下载首页</a>
-				<a th:href="@{/downfilec/myResources(userid='S111')}">我的资源</a> 
-				<a class="nav_upload  " th:href="@{/downtypec/queryTypeAll}">上传资源赚积分</a>
+				<a th:href="@{/downfilec/queryDownFile}">下载首页</a>
+				<a href="https://download.csdn.net/my" class="current">我的资源</a> 
+				<a class="nav_upload " th:href="@{/downtypec/queryTypeAll}">上传资源赚积分</a>
 				<a class=" " href="https://download.csdn.net/my/favs">我的收藏</a>
+			</div>
+			<div class="search-download">
+				<a href="https://download.csdn.net/help" class="help"><i
+					class="fa fa-question-circle"></i>下载帮助</a>
 			</div>
 		</div>
 	</div>
 	<!-- //toolbar nav -->
-	<div class="home_page_wrap">
-		<div class="container main">
-			<div class="main_l fl" style="margin-top: 0;">
-				<div class="dl_wrap">
-					<dl class="cate_sea_list clearfix" id="downtype">
-						<dt>技术领域：</dt>
-						<dd>
-							<ul class="cate_list" id="categoryid1">
-								<li bate-id="categoryall" class="cate_cur">
-                                	<a href="javascript:void(0);">全部</a>
-                            	</li>
-								<li th:each="list:${querytype}" style="height:28px;line-heiht:28px;">
-									<a href="javascript:void(0);" th:text="${list.downtypeName}"></a>
-								</li>
-							</ul>
-						</dd>
-					</dl>
-					<dl class="cate_sea_list clearfix" id="filetype">
-						<dt>资源类型：</dt>
-						<dd id="sourcetype">
-							<label bata-id="10" class="source_item js_source cate_cur">
-								<a href="javascript:void(0);">全部</a>
-							</label> 
-							<label bata-id="1" class="source_item js_source ">
-								<a href="javascript:void(0);">文档类</a>
-							</label> 
-							<label bata-id="3" class="source_item js_source ">
-								<a href="javascript:void(0);">工具类</a>
-							</label> 
-							<label bata-id="2" class="source_item js_source ">
-								<a href="javascript:void(0);">代码类</a>
-							</label> 
-							<label bata-id="4" class="source_item js_source ">
-								<a href="javascript:void(0);">其他</a>
-							</label>
-						</dd>
-					</dl>
-					<dl class="cate_sea_list clearfix">
-						<dt class="keyword_dt">关键词：</dt>
-						<dd>
-							<input type="text" class="keywords" value="" onkeyup="KeyP(event);" id="fileName">
-							<input type="button" id="keywords"  th:onclick="searchs()" value="搜索" class="cate_search">
-						</dd>
-					</dl>
+	<link rel="stylesheet" href="../mydown_files/download_profile.css">
+	<div class="meeting_main">
+		<div class="download_profile clearfix">
+			<div class="profile_card clearfix">
+				<div class="cardl">
+					<div class="user_img">
+						<img th:src="${login.pic}" alt="猴子搬来的救兵WooYun" title="猴子搬来的救兵WooYun" class="avatar">
+					</div>
+					<div class="brief">
+						<div class="name">
+							<span th:text="${login.nickname}"></span>
+						</div>
+						<p class="right clearfix">
+							<span title="当前用户等级：1"><img style="margin: 0;"
+								src="../mydown_files/down1.png" alt=""></span> <span>
+								<label>上传权限：</label> 220MB <i title="VIP专享超大附件上传特权"
+								class="fa fa-question-circle"> </i>
+							</span>
+						</p>
+					</div>
+					<ul class="datas clearfix">
+						<li><label>积分</label><span th:text="${integral}"></span></li>
+						<li><label>总排名</label><span th:text="${rownum}"></span></li>
+						<li><label>上传资源</label><span th:text="${upload}"></span></li>
+						<li><label>下载资源</label><span th:text="${down}"></span></li>
+					</ul>
 				</div>
-			</div>
-			<div class="download_l main_l pull-left">
-				<div class="resouces_tab_shows tab_nav J_tabSwitch"
-					style="margin-top: 0px;">
-					<div class="tab_bar">
-						<ul class="tab_list clearfix">
-							<li class="tab_item cur" type="dm" data-href="/search/0/2/0/0/1">资源</li>
-						</ul>
-						<div class="more_info">
-							<a id="more_info_a" href="https://download.csdn.net/search"
-								target="_blank">更多</a>
-						</div>
-					</div>
-					<!-- 选项卡 内容-->
-					<div class="tab_con_box">
-						<!-- 代码资源列表-->
-						<div class="tab_page tab3_con" id="tabab">
-							<div class="album_detail_wrap">
-								<ins th:each="file:${queryDownFile}">
-									<dl class="album_detail_list clearfix">
-										<dt>
-											<a target="_blank" href="javascript:void(0);">
-											<img src="../files/unkonw.svg" alt="img"></a>
-										</dt>
-										<dd>
-											<a target="_blank"
-												th:href="@{/downfilec/queryById(fileid=${file.fileId},downtypeid=${file.downtypeid},userid=${file.userid})}"
-												class="album_detail_title"><span th:text="${file.fileName}"></span></a>
-											<div class="album_detail_bot clearfix">
-												<label><span>上传者：</span><em class="upl_name"><span th:text="${file.uindo.nickname}">
-												</span></em> </label> <label><span>上传时间：</span><em class="upl_time"><span th:text="${#dates.format(file.uploadtime,'yyyy-MM-dd')}">
-												</span></em></label>
-												<strong><span class="jifen">积分/C币：</span><em th:text="${file.need_score}"></em></strong>
-											</div>
-										</dd>
-									</dl>
-								</ins>
-							</div>
-						</div>
-					</div>
+				<div class="cardr">
+					<ul class="pull-right non-members">
+						<li>
+							<a href="https://mall.csdn.net/vip_code" class="btn_vipsign">C币充值</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 
-			<div class="main_r pull-right" style="margin-top: -50px;">
-				<div class="dl_right_fixed">
-					<!--用户信息区域布局更改开始-->
-					<div class="mod_personal home_personal">
-						<dl class="personal_wrap clearfix" id="personal_wrap">
-							<dt>
-								<a target="_blank" href="http://my.csdn.net/qq_41594083"> 
-									<img src="../files/2_qq_41594083.jpg" alt="img" class="head">
-								</a> 
-									<span class="vip vip_l vip_l_single"> 
-									<span class="img_flag clearfix one_img"> 
-									<svg class="common_icon" aria-hidden="true"></svg>
-								</span>
-								</span>
-							</dt>
-							<dd>
-								<a href="http://my.csdn.net/qq_41594083" target="_blank"
-									class="name"> bigduang0919 </a>
-								<p>
-									<span title="当前用户等级：" class="dl_rank"> <span
-										title="当前用户等级：1"><img style="margin: 0;"
-											src="../files/down1.png" alt=""></span>
-									</span> <span class="dl_score"><i>下载积分：</i><em>0</em></span>
-								</p>
-							</dd>
-						</dl>
-						<div class="user_sign_tips">
-							<div class="btn_group ">
-								<a target="_blank" th:href="@{/downtypec/queryTypeAll}"
-									class="dl_upload_btn">上传资源</a>
-							</div>
-						</div>
+			<div class="main">
+				<div class="datas_detail pull-left">
+					<ul class="tabs clearfix">
+						<li id="myuploads"><a href="javascript:void(0);">上传资源</a></li>
+						<li id="myscore"><a href="javascript:void(0);">积分明细</a></li>
+						<li id="mydownfiles"><a href="javascript:void(0);">下载明细</a></li>
+						<li id="myfavorite"><a href="javascript:void(0);">我的收藏</a></li>
+					</ul>
+					<div class="items">
+						<div id="vip" class="list-container mb-bg"></div>
 					</div>
-					<!--精品推荐-->
-					<div class="gitchat_news right_plate_con">
-						<div class="com_plate_tit">
-							<span class="plate_title">精品推荐</span>
-						</div>
-						<div class="con_detail">
-							<ul class="news_list" th:each="ro:${recommend}">
-								<li class="news_item">
-									<a target="_blank" th:href="@{/downfilec/queryById(fileid=${ro.fileId},downtypeid=${ro.downtypeid})}" class="clearfix">
-										<p>
-											<strong th:text=${ro.fileName}></strong>
-										</p>
-									</a>
-									<p class="small">
-										<span class="authorName">作者/分享人：</span>
-										<span th:text="${ro.uindo.nickname}"></span>
-										<span>职位：<span th:text="${ro.uindo.curjob}"></span></span>
-									</p>
-								</li>
-							</ul>
-						</div>
+				</div>
+				<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+				<script type="text/javascript">
+					var tablevip = "";
+					document.getElementById("myuploads").onclick = myuploads;
+					function myuploads(){
+						tablevip = "";
+						$("#myuploads").prop('class','cur');
+						$("#myscore").prop('class','');
+						$("#mydownfiles").prop('class','');
+						$("#myfavorite").prop('class','');
+						$.ajax({
+							url:'/tribune/downfilec/queryMyUp',
+							data:{'userid':'S111'},
+							success:function(data){
+								if(data != ""){
+									for (var i = 0; i < data.length; i++) {
+										tablevip +="<div class='item uresource'><div class='selector-box'>";
+			                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' class='btn-selector active' target='_self'>全部</a><a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' class='btn-selector ' target='_self'>待审核</a><a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' class='btn-selector ' target='_self'>已通过</a>";
+		                                tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' class='btn-selector ' target='_self'>未通过</a></div><ul><li><div class='card clearfix'><div class='img rar1'>";
+		                                tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3>"+data[i].fileName+"</a></h3>";
+		                                tablevip +="<p class='brief'>sadksaldkslakdlsakdlsadksalk</p><div class='flex-box state-box'><p class='tags clearfix'><div class='state'><span class='refuse'>状态</span>";
+		                                tablevip +="</div></div><div class='date'><label>上传时间：</label>"+data[i].uploadtime+"<div class='score'><label>所需积分/C币：</label>"+data[i].need_score+"</div></div>";
+		                                tablevip +="<div class='content' style='margin-left:42px;display: none' id='score_log_10980889'></div></div></li></ul></div>";
+									}									
+								}else{
+									tablevip +="<dl><dt class='empty_icons'><img src='../mydown_files/empty_icon.png' alt='' title='' class='empty_icon'></dt>";
+									tablevip +="<dd class='empty'>提示：你还没有上传资源~<a href='javascript:void(0);'>现在去上传</a></dd></dl>";
+								}
+								$("#vip").html(tablevip);
+							}
+						});
+					}
+					document.getElementById("myscore").onclick = myscore;
+					function myscore(){
+						tablevip = "";
+						$("#myuploads").prop('class','');
+						$("#myscore").prop('class','cur');
+						$("#mydownfiles").prop('class','');
+						$("#myfavorite").prop('class','');
+						$.ajax({
+							url:'/tribune/downresourcec/queryFileById',
+							data:{"uid":'S111'},
+							success:function(data){
+								if(data != null){
+									tablevip +="<table><thead  style='font-size:18px;font-weight:bold;'><tr><td style='width:180px;'>积分</td><td style='width:180px;'>时间</td><td style='width:180px;'>下载资源</td><td>剩余积分</td></tr></thead>";
+									for (var i = 0; i < data.length; i++) { 
+										tablevip +="<tbody><tr><td>"+data[i].need_score+"</td><td>"+data[i].downtime+"</td><td>"+data[i].fileName+"</td><td>"+data[i].integral+"</td></tr></tbody>";
+									}
+									tablevip +="</table>";
+								}else{
+									tablevip +="<table><thead  style='font-size:18px;font-weight:bold;'><tr><td style='width:180px;'>积分</td><td style='width:180px;'>时间</td><td style='width:180px;'>下载资源</td></tr></thead>";
+									tablevip +="<tbody><tr><td></td><td></td><td></td></tr>";
+									tablevip +="</tbody></table>";
+								}
+								$("#vip").html(tablevip);
+							}
+						});
+					}
+					document.getElementById("mydownfiles").onclick = mydownfiles;
+					function mydownfiles(){
+						tablevip = "";
+						$("#vip").html(tablevip);
+						$("#myuploads").prop('class','');
+						$("#myscore").prop('class','');
+						$("#myfavorite").prop('class','');
+						$("#mydownfiles").prop('class','cur');
+						$.ajax({
+							url:'/tribune/downresourcec/queryFileById',
+							data:{"uid":'S111'},
+							success:function(data){
+								if(data != 1){
+									tablevip +="<table><thead style='font-size:18px;font-weight:bold;'><tr><td style='width:150px;'>资源名称</td><td style='width:150px;'>资源类型</td><td style='width:150px;'>作者</td><td style='width:150px;'>下载时间</td></tr></thead>";
+									for (var i = 0; i < data.length; i++) {
+										tablevip +="<tbody><tr><td>"+data[i].fileName+"</td><td>"+data[i].downtypeName+"</td><td>"+data[i].nickname+"</td><td>"+data[i].downtime+"</td></tr></tbody>";
+									}	
+									tablevip +="</table>";
+								}else{
+									tablevip +="<dl><dt class='empty_icons'><img src='//csdnimg.cn/release/download/images/empty_icon.png?/v=201812141445' alt='' title='' class='empty_icon'></dt>";
+									tablevip +="<dd class='empty'>提示：你还没有下载资源~</dd></dl>";
+								}
+								$("#vip").html(tablevip);
+							}
+						});
+					}
+					document.getElementById("myfavorite").onclick = myfavorite;
+					function myfavorite(){
+						tablevip = "";
+						$("#myuploads").prop('class','');
+						$("#myscore").prop('class','');
+						$("#mydownfiles").prop('class','');
+						$("#myfavorite").prop('class','cur');
+						tablevip +="<dl><dt class='empty_icons'><img src='//csdnimg.cn/release/download/images/empty_icon.png?/v=201812141445' alt='' title='' class='empty_icon'></dt>";
+						tablevip +="<dd class='empty'>提示：你还没有收藏过资源哦~</dd></dl>";
+						$("#vip").html(tablevip);
+					}
+					//初始化
+					$(function(){
+						myuploads();
+					});
+				</script>
+				<!-- 右下部分 -->
+				<div class="aside pull-right">
+					<div class="btns clearfix">
+						<a th:href="@{/downtypec/queryTypeAll}" class="upload"> 
+							<i class="fa fa-upload"></i>上传资源
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="../js/jquery.js"></script>
+
+
 	<script type="text/javascript">
-		$(function() {
-	       //为filter下的所有a标签添加单击事件
-	       $(".dl_wrap a").click(function () {
-	    	   var tableContent = "";
-	           $(this).parents("dl").children("dd").each(function () {
-					$('a',this).removeClass("seled");
-	           });
-	           $(this).attr("class", "seled");
-	           $.ajax({
-	           	url:'/tribune/downfilec/queryfile',
-	           	type:'post',
-	       		data:{ 'downtype':RetSelecteds(),'filetype':filetpeSelecteds()},
-	       		success:function(data){
-	       			if(data != ""){
-	       				for (var i = 0; i < data.length; i++) {
-							 tableContent +="<dl class='album_detail_list clearfix'><dt>";
-							 tableContent +="<a target='_blank' href='javascript:void(0);'><img src='../files/unkonw.svg' alt='img'></a>";
-							 tableContent +="</dt><dd><a target='_blank' href='queryById?fileid="+data[i].fileId+"&downtypeid="+data[i].downtypeid+"' class='album_detail_title'>";
-							 tableContent +="<span>"+data[i].fileName+"</span></a><div class='album_detail_bot clearfix'><label><span>上传者：</span>";
-							 tableContent +="<em class='upl_name'><span>"+data[i].uindo.nickname+"</span></em> </label> <label><span>上传时间：</span><em class='upl_time'>";
-							 tableContent +="<span>"+data[i].uploadtime+"</span></em></label><strong><span class='jifen'>积分/C币：</span><em>"+data[i].need_score+"</em>";
-							 tableContent +="</strong></div></dd></dl>";
-	                	}
-						$(".album_detail_wrap").html(tableContent);
-	       			}else{
-	       				$(".album_detail_wrap").html("<h3 style='text-align:center;'>抱歉，没有数据！</h3>");
-	       			}
-	       		}
-	           });
-	       });
-		});
-		function RetSelecteds() {
-	       var result = "";
-	       $("#downtype a[class='seled']").each(function () {
-	       	result += $(this).html()+",";
-	       });
-	       return result;
-	   	}
-		function filetpeSelecteds() {
-	       var result = "";
-	       $("#filetype a[class='seled']").each(function () {
-	       	result += $(this).html()+",";
-	       });
-	       return result;
-		}
-		function searchs(){
-			$(".dl_wrap dt+dd a").attr("class",'');
-			var fileName = $("#fileName").val();
-			var tableContent = "";
-			$.ajax({
-				url:'/tribune/downfilec/findByName',
-				data:{"fileName":fileName},
-				success:function(data){
-					if(data != ""){
-						for (var i = 0; i < data.length; i++) {
-							 tableContent +="<dl class='album_detail_list clearfix'><dt>";
-							 tableContent +="<a target='_blank' href='javascript:void(0);'><img src='../files/unkonw.svg' alt='img'></a>";
-							 tableContent +="</dt><dd><a target='_blank' href='queryById?fileid="+data[i].fileId+"&downtypeid="+data[i].downtypeid+"' class='album_detail_title'>";
-							 tableContent +="<span>"+data[i].fileName+"</span></a><div class='album_detail_bot clearfix'><label><span>上传者：</span>";
-							 tableContent +="<em class='upl_name'><span>"+data[i].uindo.nickname+"</span></em> </label> <label><span>上传时间：</span><em class='upl_time'>";
-							 tableContent +="<span>"+data[i].uploadtime+"</span></em></label><strong><span class='jifen'>积分/C币：</span><em>"+data[i].need_score+"</em>";
-							 tableContent +="</strong></div></dd></dl>";
-	                	}
-						$(".album_detail_wrap").html(tableContent);
-						$("#fileName").val("");
-					}else{
-						alert("没有数据！请重新输入");
-						window.location.href="queryDownFile";
-					}
-				}
-			});
-		}
-	</script>
-	
+    function cancel_fav(sourcename, id)
+    {
+        if (confirm("您确定要取消对" + sourcename + "的收藏吗？"))
+        {
+            $.get("/index.php/favorite/cancel_fav/" + id, function (data) {
+                data = eval('(' + data + ')');
+                //alert(data.msg);
+                window.location.href = '/my/favs';
+            });
+        }
+    }
+    function dialog_log(id) {
+        var sp = $('#score_log_' + id.toString());
+        if (sp.is(":hidden")) {
+            sp.show();
+        } else {
+            sp.hide();
+        }
+    }
+
+    function del_my_src(id)
+    {
+        $("#resource_id").val(id);
+        $("#delete_reason").css("display", "block");
+        /*资源删除原因*/
+        $("#del_reason_form input").first().attr("checked", "checked");
+        $("#delreason").attr("value", "");
+
+        $("#delreason").focus(function () {
+            $(':input:radio:checked').attr("checked", false);
+        })
+        $("#delreason").blur(function () {
+            if ($("#delreason").val() == '') {
+                $("#del_reason_form input").first().attr("checked", true);
+            }
+        })
+    }
+//我知道了
+    $('.update_tips_btn .up_ok').click(function () {
+        var count = $("#can_upload_count").text();
+        if (count == 0) {
+            alert('修改次数超限制！');
+            window.location.reload();
+        } else {
+            window.location.href = "/upload/" + $(this).attr('data-id');
+        }
+
+
+    });
+
+
+    $(function () {
+        var oResouce = {
+            show: function (obj) {
+                $(obj).show();
+                $("#dlMask").show();
+            },
+            hide: function (obj) {
+                $(obj).hide();
+                $("#dlMask").hide();
+            },
+            myResource: function () {
+                var editBtn = $(".my_edit"),
+                        soldOut = $(".my_soldOut"),
+                        delBtn = $(".my_del"),
+                        _this = this;
+                editBtn.each(function () {
+                    $(this).on("click", function () {
+                        window.location.href = '/upload/' + $(this).attr('source_id')
+                        // $('#edit_source_a').attr('href', '/upload/' + $(this).attr('source_id'));
+                        // _this.show("#my_edit");
+                    });
+                });
+                soldOut.each(function () {
+                    $(this).on("click", function () {
+                        _this.show("#sold_out");
+                    });
+                });
+                delBtn.each(function () {
+                    $(this).on("click", function () {
+                        $('#del_source_a').attr('source_id', $(this).attr('source_id'));
+                        _this.show("#my_del");
+                    });
+                });
+                $(".my_close,.my_cancel").on("click", function () {
+                    _this.hide(".my_pop");
+                });
+            }
+        };
+        oResouce.myResource();
+    });
+
+</script>
 </body>
 </html>

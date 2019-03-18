@@ -1,0 +1,1 @@
+define(["apps/PreviewImage"],function(e){return{uploadImg:function(){$("#albumform").ajaxForm(),$("input[name=imagesrc]").bind("change",function(){e.PreviewImage(this,"#imgView","#albumform")})}}});

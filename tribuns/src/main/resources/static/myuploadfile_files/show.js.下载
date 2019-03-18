@@ -1,0 +1,1 @@
+define(function(){return{show:function(n){$(n).show(),$("#dlMask").show()}}});

@@ -1,0 +1,1 @@
+define(function(){return{init:function(){var n=$(".follow_menu_box");$(window).scroll(function(){900<$(window).scrollTop()?n.show():n.hide()})}}});

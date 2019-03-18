@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.sr.dao.DownResourceDao">
+	<!-- public List<Map<String,Object>> queryFileById(String uid); -->
+	<select id="queryFileById" resultType="Map">
+		select dr.downid,df.fileId,df.fileName,df.downtypeid,
+		df.fileDis,df.need_score,ui.userId,ui.nickname,ui.curjob,
+		dr.downtime,dt.downtypeid,dt.downtypeName,ui.integral 
+		from downresource dr left join downfile df
+		on dr.fileid=df.fileId left join userinfo ui
+		on ui.userId=dr.userid left join downtype dt
+		on dt.downtypeid=df.downtypeid where dr.userid=#{uid}
+	</select>
+</mapper>

@@ -1,0 +1,1 @@
+define(function(){return{init:function(){var n=$(".unfold"),i=$(".fold"),o=$(".download_b_hide");n.on("click",function(){o.show(),i.show(),n.hide()}),i.on("click",function(){o.hide(),i.hide(),n.show()})}}});
