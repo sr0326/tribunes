@@ -2038,6 +2038,26 @@
 				<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
 				<script type="text/javascript">
 					var tablevip = "";
+					function contexts(data){
+						if(data != ""){
+							for (var i = 0; i < data.length; i++) {
+								tablevip +="<div class='item uresource'><div class='selector-box'>";
+	                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' id='findalls' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
+	                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='finddai()' class='btn-selector ' target='_self'>待审核</a>";
+	                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findyi()' class='btn-selector ' target='_self'>已通过</a>";
+                                tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findno()' class='btn-selector ' target='_self'>未通过</a></div><ul><li><div class='card clearfix'><div class='img rar1'>";
+                                tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3>"+data[i].fileName+"</a></h3>";
+                                tablevip +="<p class='brief'>sadksaldkslakdlsakdlsadksalk</p><div class='flex-box state-box'><p class='tags clearfix'><div class='state'><span class='refuse'>"+data[i].upfilestate+"</span>";
+                                tablevip +="</div></div><div class='date'><label>上传时间：</label>"+data[i].uploadtime+"<div class='score'><label>所需积分/C币：</label>"+data[i].need_score+"</div></div>";
+                                tablevip +="<div class='content' style='margin-left:42px;display: none' id='score_log_10980889'></div></div></li></ul></div>";
+							}									
+						}else{
+							tablevip +="<dl><dt class='empty_icons'><img src='../mydown_files/empty_icon.png' alt='' title='' class='empty_icon'></dt>";
+							tablevip +="<dd class='empty'>提示：你还没有上传资源~<a href='javascript:void(0);'>现在去上传</a></dd></dl>";
+						}
+						$("#vip").html(tablevip);
+					}
+					
 					document.getElementById("myuploads").onclick = myuploads;
 					function myuploads(){
 						tablevip = "";
@@ -2047,15 +2067,17 @@
 						$("#myfavorite").prop('class','');
 						$.ajax({
 							url:'/tribune/downfilec/queryMyUp',
-							data:{'userid':'S111'},
+							data:{'userid':'S111','upfilestate':'0'},
 							success:function(data){
 								if(data != ""){
 									for (var i = 0; i < data.length; i++) {
 										tablevip +="<div class='item uresource'><div class='selector-box'>";
-			                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' class='btn-selector active' target='_self'>全部</a><a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' class='btn-selector ' target='_self'>待审核</a><a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' class='btn-selector ' target='_self'>已通过</a>";
-		                                tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' class='btn-selector ' target='_self'>未通过</a></div><ul><li><div class='card clearfix'><div class='img rar1'>";
+			                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' id='findalls' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
+			                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='finddai()' class='btn-selector ' target='_self'>待审核</a>";
+			                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findyi()' class='btn-selector ' target='_self'>已通过</a>";
+		                                tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findno()' class='btn-selector ' target='_self'>未通过</a></div><ul><li><div class='card clearfix'><div class='img rar1'>";
 		                                tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3>"+data[i].fileName+"</a></h3>";
-		                                tablevip +="<p class='brief'>sadksaldkslakdlsakdlsadksalk</p><div class='flex-box state-box'><p class='tags clearfix'><div class='state'><span class='refuse'>状态</span>";
+		                                tablevip +="<p class='brief'>sadksaldkslakdlsakdlsadksalk</p><div class='flex-box state-box'><p class='tags clearfix'><div class='state'><span class='refuse'>"+data[i].upfilestate+"</span>";
 		                                tablevip +="</div></div><div class='date'><label>上传时间：</label>"+data[i].uploadtime+"<div class='score'><label>所需积分/C币：</label>"+data[i].need_score+"</div></div>";
 		                                tablevip +="<div class='content' style='margin-left:42px;display: none' id='score_log_10980889'></div></div></li></ul></div>";
 									}									
@@ -2064,6 +2086,50 @@
 									tablevip +="<dd class='empty'>提示：你还没有上传资源~<a href='javascript:void(0);'>现在去上传</a></dd></dl>";
 								}
 								$("#vip").html(tablevip);
+							}
+						});
+					}
+
+					function findall(){
+						tablevip = "";
+						$.ajax({
+							url:'/tribune/downfilec/queryMyUp',
+							data:{'userid':'S111','upfilestate':'0'},
+							success:function(data){
+								contexts();
+							}
+						});
+					}
+					
+					function findno(){
+						tablevip = "";
+						$.ajax({
+							url:'/tribune/downfilec/queryMyUp',
+							data:{'userid':'S111','upfilestate':'3'},
+							success:function(data){
+								contexts(data);
+							}
+						});
+					}
+					
+					function finddai(){
+						tablevip = "";
+						$.ajax({
+							url:'/tribune/downfilec/queryMyUp',
+							data:{'userid':'S111','upfilestate':'2'},
+							success:function(data){
+								contexts(data);
+							}
+						});
+					}
+
+					function findyi(){
+						tablevip = "";
+						$.ajax({
+							url:'/tribune/downfilec/queryMyUp',
+							data:{'userid':'S111','upfilestate':'1'},
+							success:function(data){
+								contexts(data);
 							}
 						});
 					}

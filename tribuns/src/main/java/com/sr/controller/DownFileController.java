@@ -35,7 +35,7 @@ public class DownFileController {
 		List<DownType> querytype = dts.queryAll();
 		model.addAttribute("querytype", querytype);
 		//下载资源(所有资源)
-		List<DownFile> queryDownFile = dfs.queryDownFile(null,null,null,null,null);
+		List<DownFile> queryDownFile = dfs.queryDownFile(null,null,null,null,null,null);
 		model.addAttribute("queryDownFile", queryDownFile);
 		//精品推荐
 		List<DownFile> recommend = dfs.recommend();
@@ -76,7 +76,7 @@ public class DownFileController {
 			filetypeid = null;
 		}
 		System.out.println("downtypeid:"+downtypeid+",filetypeid:"+filetypeid);
-		List<DownFile> query = dfs.queryDownFile(downtypeid,null,null,null,filetypeid);
+		List<DownFile> query = dfs.queryDownFile(downtypeid,null,null,null,filetypeid,null);
 		System.out.println(query);
 		return query;
 	}
@@ -86,7 +86,7 @@ public class DownFileController {
 	@ResponseBody
 	public List<DownFile> findByName(String fileName){
 		System.out.println(fileName);
-		List<DownFile> byName = dfs.queryDownFile(null,fileName,null,null,null);
+		List<DownFile> byName = dfs.queryDownFile(null,fileName,null,null,null,null);
 		System.out.println(byName);
 		return byName;
 	}
@@ -97,7 +97,7 @@ public class DownFileController {
 		DownFile queryById = dfs.queryById(fileid);
 		model.addAttribute("queryById", queryById);
 		//根据类型查询资源
-		List<DownFile> bydowntypeid = dfs.queryDownFile(downtypeid, null,fileid,null,null);
+		List<DownFile> bydowntypeid = dfs.queryDownFile(downtypeid, null,fileid,null,null,null);
 		model.addAttribute("bydowntypeid", bydowntypeid);
 		//根据资源ID查询作者信息
 		DownFile queryUser = dfs.queryUser(fileid);
@@ -137,8 +137,8 @@ public class DownFileController {
 	 */
 	@RequestMapping("queryMyUp")
 	@ResponseBody
-	public List<DownFile> queryMyUp(String userid){
-		List<DownFile> queryMyDowns = dfs.queryDownFile(null, null, null, userid,null);
+	public List<DownFile> queryMyUp(String userid,Integer upfilestate){
+		List<DownFile> queryMyDowns = dfs.queryDownFile(null, null, null, userid,null,upfilestate);
 		System.out.println(queryMyDowns);
 		return queryMyDowns;
 	}

@@ -48,7 +48,7 @@
 		</association>
 	</resultMap>
 	
-	<!-- public List<DownFile> queryDownFile(Integer downtypeid,String fileName,Integer fileid,Integer userid,Integer filetype); -->
+	<!-- public List<DownFile> queryDownFile(Integer downtypeid,String fileName,Integer fileid,Integer userid,Integer filetype,Integer upfilestate); -->
 	<select id="queryDownFile" resultMap="getUserMap">
 		select df.*,ui.* from downfile df,userinfo ui where ui.userId=df.userid
 		<if test="param1 != null and param1 != ''">
@@ -65,6 +65,9 @@
 		</if>
 		<if test="param5 != null and param5 != ''">
 			and df.filetype=#{param5}
+		</if>
+		<if test="param6 != null and param6 != ''">
+			and df.upfilestate=#{param6}
 		</if>
 	</select>
 	

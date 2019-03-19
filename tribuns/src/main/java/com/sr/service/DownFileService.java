@@ -15,8 +15,8 @@ public class DownFileService {
 	@Autowired
 	DownFileDao dfd;
 	
-	public List<DownFile> queryDownFile(Integer downtypeid,String fileName,Integer fileid,String userid,Integer filetype){
-		return dfd.queryDownFile(downtypeid,fileName,fileid,userid,filetype);
+	public List<DownFile> queryDownFile(Integer downtypeid,String fileName,Integer fileid,String userid,Integer filetype,Integer upfilestate){
+		return dfd.queryDownFile(downtypeid,fileName,fileid,userid,filetype,upfilestate);
 	}
 	
 	public DownFile queryById(Integer fileid){

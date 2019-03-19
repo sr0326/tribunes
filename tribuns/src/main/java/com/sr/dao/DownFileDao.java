@@ -15,7 +15,7 @@ public interface DownFileDao{
 	 * 按条件查询下载资源
 	 * @return
 	 */
-	public List<DownFile> queryDownFile(Integer downtypeid,String fileName,Integer fileid,String userid,Integer filetype);
+	public List<DownFile> queryDownFile(Integer downtypeid,String fileName,Integer fileid,String userid,Integer filetype,Integer upfilestate);
 	
 	/**
 	 * 根据ID查询信息
