@@ -17,7 +17,7 @@ public class DownFile implements Serializable{
 	private Integer filesize;
 	private Integer need_score;
 	private String url;
-	private Integer upfilestate;
+	private Integer upfilestate;//0全部,1已通过,2待审核,3未通过,4已删除
 	//多对一
 	private UserInfo uindo;
 	private DownType dtype;

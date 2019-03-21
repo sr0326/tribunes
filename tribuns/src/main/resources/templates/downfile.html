@@ -3742,14 +3742,14 @@ newsfeed .img {
 								<dd>
 									<h3 th:text="${queryById.fileName}">
 										<span th:text="${queryById.fileName}"></span> 
-										<span class="starts"> <em>评分:</em>
-											<!-- 实现显示空心星星  -->
+										<!-- <span class="starts"> <em>评分:</em>
+											实现显示空心星星 
 											<i aria-hidden="true" class="fa fa-star"></i>
 											<i aria-hidden="true" class="fa fa-star"></i> 
 											<i aria-hidden="true" class="fa fa-star"></i> 
 											<i aria-hidden="true" class="fa fa-star"></i> 
 											<i aria-hidden="true" class="fa fa-star"></i>
-										</span>
+										</span> -->
 									</h3>
 									<div class="download_b">
 										<div class="pre_description"><span th:text="${queryById.fileDis}"></span></div>
@@ -3761,7 +3761,7 @@ newsfeed .img {
 											</label> 
 											<strong class="size_box"> 
 												<span  th:text="${#dates.format(queryById.uploadtime,'yyyy-MM-dd')}"></span>
-												<span>大小：<em>28KB</em></span>
+												<span>大小：<em th:text="${queryById.filesize}"></em></span>
 											</strong>
 										</div>
 									</div>
@@ -3776,10 +3776,7 @@ newsfeed .img {
 							</label>
 
 							<!-- 备注：资源下载和详情页埋点修改  update by yc 20170703 -->
-							<a href="https://mall.csdn.net/vip_code" class="open_vip"><img
-								src="../downfile_files/vip.png"><span
-								class="report_101_source_click">开通VIP </span> </a> <a
-								href="javascript:;" class="direct_download" target="_self">立即下载</a>
+							 <a href="javascript:;" class="direct_download" target="_self">立即下载</a>
 						</div>
 						<div class="dl_download_box_r fr">
 							<link rel="stylesheet" href="../downfile_files/share.css">
@@ -3788,10 +3785,10 @@ newsfeed .img {
 								class="fa fa-star-o"></i> <span>收藏</span> <em></em>
 							</a>
 							<!--举报功能-->
-							<a href="javascript:;" id="download_report" class="dl_func">
+							<!-- <a href="javascript:;" id="download_report" class="dl_func">
 								<i class="fa fa-exclamation-triangle"></i> <span><font
 									color="red">举报</font></span>
-							</a>
+							</a> -->
 						</div>
 					</div>
 				</div>
@@ -3821,7 +3818,7 @@ newsfeed .img {
 										href="javascrpt:void(0);"
 										target="_blank">
 										<div class="album_detail_bot clearfix">
-											<strong> <em>1 积分/C币</em></strong> 
+											<strong> <em th:text="${list.need_score}"> 积分/C币</em></strong> 
 											<label><span>上传者：</span> 
 												<em class="upl_time" th:text="${list.uindo.nickname}"></em>
 											</label> 
@@ -4017,15 +4014,14 @@ newsfeed .img {
 									class="name"><span th:text="${queryUser.uindo.nickname}"></span></a>
 								<p>
 									<span title="当前用户等级：1"><img style="margin: 0;"
-										src="../downfile_files/down1.png" alt=""></span>
+										src="" alt=""></span>
 								</p>
 								<div class="mod_person_r">
 									<p>
 										<span class="attention_btn attention">关注</span>
 									</p>
 									<div class="check_all" style="text-align: center;">
-										<a href="https://download.csdn.net/user/m0_37848125/uploads"
-											target="_blank" class="check_all_btn"> 查看TA的资源 </a>
+										<a th:href="@{/downfilec/heresour(userid=${queryUser.userid},pageindex=1)}" target="_blank" class="check_all_btn"> 查看TA的资源 </a>
 									</div>
 								</div>
 							</dd>
@@ -4473,7 +4469,7 @@ newsfeed .img {
 		<h4 class="sec_pop_t">您因违反CSDN下载频道规则而被锁定帐户，如有疑问，请联络:webmaster@csdn.net!</h4>
 	</div>
 	<!--举报-->
-	<div id="dlReport" class="dl_popup">
+	<!-- <div id="dlReport" class="dl_popup">
 		<i class="fa fa-close pop_close"></i>
 		<h3 class="report_title">举报</h3>
 		<form role="form" id="reportform" name="certificateform"
@@ -4493,9 +4489,9 @@ newsfeed .img {
 				<ul class="int_list">
 					<li><span>举报人：</span> <label> sr9089</label></li>
 					<li><span>被举报人：</span> <label>m0_37848125</label></li>
-					<!--<li><span>举报的资源分：</span>
+					<li><span>举报的资源分：</span>
                     <label></label>
-                </li>-->
+                </li>
 					<li><span><em>*</em>类型：</span> <select id="report_type"
 						name="report_type" class="form-control">
 							<option style="font-size:12px">请选择类型</option>
@@ -4534,7 +4530,7 @@ newsfeed .img {
 				<button id="btn_submit" type="button" class="btn btn-primary">提&nbsp;&nbsp;交</button>
 			</div>
 		</form>
-	</div>
+	</div> -->
 	<!--跟随菜单-->
 	<div class="follow_menu_box">
 		<div class="follow_menu clearfix">

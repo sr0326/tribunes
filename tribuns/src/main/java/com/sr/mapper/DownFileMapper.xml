@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.sr.dao.DownFileDao">
-	<resultMap type="DownFile" id="getUserMap">	
+	<resultMap type="com.sr.entity.DownFile" id="getUserMap">	
 		<id column="fileId" property="fileId" />
 		<id column="fileName" property="fileName" />
 		<id column="downtypeid" property="downtypeid" />
@@ -14,7 +14,7 @@
 		<id column="need_score" property="need_score" />
 		<id column="url" property="url" />
 		<id column="upfilestate" property="upfilestate" />
-		<association property="uindo" javaType="UserInfo">
+		<association property="uindo" javaType="com.sr.entity.UserInfo">
 			<id column="userId" property="userId" />
 			<id column="nickname" property="nickname" />
 			<id column="realName" property="realName" />
@@ -29,7 +29,7 @@
 		</association>
 	</resultMap>
 	
-	<resultMap type="DownFile" id="gettypeMap">	
+	<resultMap type="com.sr.entity.DownFile" id="gettypeMap">	
 		<id column="fileId" property="fileId" />
 		<id column="fileName" property="fileName" />
 		<id column="downtypeid" property="downtypeid" />
@@ -42,7 +42,7 @@
 		<id column="need_score" property="need_score" />
 		<id column="url" property="url" />
 		<id column="upfilestate" property="upfilestate" />
-		<association property="dtype" javaType="DownType">
+		<association property="dtype" javaType="com.sr.entity.DownType">
 			<id column="downtypeid" property="downtypeid" />
 			<id column="downtypeName" property="downtypeName" />
 		</association>
@@ -50,7 +50,8 @@
 	
 	<!-- public List<DownFile> queryDownFile(Integer downtypeid,String fileName,Integer fileid,Integer userid,Integer filetype,Integer upfilestate); -->
 	<select id="queryDownFile" resultMap="getUserMap">
-		select df.*,ui.* from downfile df,userinfo ui where ui.userId=df.userid
+		select df.*,ui.* from downfile df,userinfo ui where 
+		ui.userId=df.userid
 		<if test="param1 != null and param1 != ''">
 			and df.downtypeid=#{param1}
 		</if>
@@ -74,24 +75,25 @@
 	<!-- public DownFile queryById(Integer fileid); -->
 	<select id="queryById" resultMap="gettypeMap">
 		select df.*,dt.* from downfile df,downtype dt where
-		dt.downtypeid=df.downtypeid and df.fileId=#{param1}
+		dt.downtypeid=df.downtypeid and df.upfilestate=1 and df.fileId=#{param1}
 	</select>
 	
 	<!-- public List<DownFile> recommend(Integer page); -->
 	<select id="recommend" resultMap="getUserMap">
 		select df.*,ui.* from downfile df,userinfo ui where ui.userId=df.userid
-		order by downtime limit 5
+		and df.upfilestate=1 order by downtime limit 5
 	</select>
 	
 	<!-- public List<DownFile> BynewTime(); -->
 	<select id="BynewTime" resultMap="getUserMap">
 		select df.*,ui.* from downfile df,userinfo ui where ui.userId=df.userid
-		order by uploadtime
+		and df.upfilestate=1 order by uploadtime
 	</select>
 	
 	<!-- public DownFile queryUser(Integer fileid); -->
 	<select id="queryUser" resultMap="getUserMap">
 		select df.*,ui.* from downfile df,userinfo ui where ui.userId=df.userid
+		and df.upfilestate=1
 		<if test="_parameter != null and _parameter != ''">
 			and df.fileId=#{fileid}
 		</if>
@@ -101,7 +103,7 @@
 	<select id="queryByUseridfiles" resultMap="gettypeMap">
 		select df.*,dt.* from downfile df,downtype dt where
 		dt.downtypeid=df.downtypeid and df.userid=#{param1}
-		and df.fileid not in (#{param2})
+		and df.fileid not in (#{param2}) and df.upfilestate=1
 	</select>
 	
 	<!-- public List<Map<String,Object>> queryPaiming(String userid); -->
@@ -119,4 +121,35 @@
 		ui.integral,dre.down,ui.userId,pm.rownum
 	</select>
 	
+	<!-- public int addfile(DownFile df); -->
+	<insert id="addfile" parameterType="com.sr.entity.DownFile">
+		<selectKey keyColumn="fileId" keyProperty="fileId" order="BEFORE" resultType="com.sr.entity.DownFile">
+			select max(fileId)+1 fileId from downfile
+		</selectKey>
+		insert into downfile(fileId,fileName,downtypeid,filetype,userid,uploadtime,fileDis
+		,downtime,filesize,need_score,url,upfilestate) values(#{fileId},#{fileName},
+		#{downtypeid},#{filetype},#{userid},now(),#{fileDis}
+		,0,#{filesize},#{need_score},#{url},2)
+	</insert>
+	
+	<!-- public List<Map<String,Object>> queryHeResour(String uid,Integer pageindex); -->
+	<select id="queryHeResour" resultType="Map">
+		select df.fileId,df.need_score,df.filesize,df.fileDis,
+		df.uploadtime,df.userid,df.downtypeid,df.fileName,
+		ui.nickname,ui.integral,ui.pic,dt.downtypeName from 
+		downfile df,userinfo ui,downtype dt where df.userid=ui.userId 
+		and df.downtypeid=dt.downtypeid and df.userid=#{param1} 
+		and df.upfilestate=1
+		<if test="param2 != null and param2 != ''">
+			limit #{param2},2
+		</if>
+		<if test="param2 == 0">
+			limit 2
+		</if>
+	</select>
+	
+	<!-- public UserInfo queryHeUser(String uid); -->
+	<select id="queryHeUser" resultType="com.sr.entity.UserInfo">
+		select * from userinfo where userId=#{uid}
+	</select>
 </mapper>

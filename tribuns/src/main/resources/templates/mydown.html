@@ -2000,10 +2000,8 @@
 							<span th:text="${login.nickname}"></span>
 						</div>
 						<p class="right clearfix">
-							<span title="当前用户等级：1"><img style="margin: 0;"
-								src="../mydown_files/down1.png" alt=""></span> <span>
-								<label>上传权限：</label> 220MB <i title="VIP专享超大附件上传特权"
-								class="fa fa-question-circle"> </i>
+							<span>
+								<label>上传权限：</label> 220MB
 							</span>
 						</p>
 					</div>
@@ -2040,20 +2038,33 @@
 					var tablevip = "";
 					function contexts(data){
 						if(data != ""){
+							tablevip +="<div class='item uresource'><div class='selector-box'>";
+                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' id='findalls' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
+                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='finddai()' class='btn-selector ' target='_self'>待审核</a>";
+                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findyi()' class='btn-selector ' target='_self'>已通过</a>";
+                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findno()' class='btn-selector ' target='_self'>未通过</a></div>";
 							for (var i = 0; i < data.length; i++) {
-								tablevip +="<div class='item uresource'><div class='selector-box'>";
-	                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' id='findalls' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
-	                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='finddai()' class='btn-selector ' target='_self'>待审核</a>";
-	                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findyi()' class='btn-selector ' target='_self'>已通过</a>";
-                                tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findno()' class='btn-selector ' target='_self'>未通过</a></div><ul><li><div class='card clearfix'><div class='img rar1'>";
+								if(data[i].upfilestate == 4 ){
+									data[i].upfilestate = "已删除";
+								}else{
+									data[i].upfilestate="";
+								}
+								tablevip +="<ul><li><div class='card clearfix'><div class='img rar1'>";
                                 tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3>"+data[i].fileName+"</a></h3>";
                                 tablevip +="<p class='brief'>sadksaldkslakdlsakdlsadksalk</p><div class='flex-box state-box'><p class='tags clearfix'><div class='state'><span class='refuse'>"+data[i].upfilestate+"</span>";
                                 tablevip +="</div></div><div class='date'><label>上传时间：</label>"+data[i].uploadtime+"<div class='score'><label>所需积分/C币：</label>"+data[i].need_score+"</div></div>";
-                                tablevip +="<div class='content' style='margin-left:42px;display: none' id='score_log_10980889'></div></div></li></ul></div>";
-							}									
+                                tablevip +="<div class='content' style='margin-left:42px;display: none' id='score_log_10980889'></div></div></li></ul>";
+							}
+							tablevip +="</div>";
 						}else{
+							tablevip +="<div class='item uresource'><div class='selector-box'>";
+                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' id='findalls' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
+                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='finddai()' class='btn-selector ' target='_self'>待审核</a>";
+                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findyi()' class='btn-selector ' target='_self'>已通过</a>";
+                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findno()' class='btn-selector ' target='_self'>未通过</a></div>";
 							tablevip +="<dl><dt class='empty_icons'><img src='../mydown_files/empty_icon.png' alt='' title='' class='empty_icon'></dt>";
-							tablevip +="<dd class='empty'>提示：你还没有上传资源~<a href='javascript:void(0);'>现在去上传</a></dd></dl>";
+							tablevip +="<dd class='empty'>提示：没有哦~</dd></dl></div>";
+							
 						}
 						$("#vip").html(tablevip);
 					}
@@ -2070,17 +2081,24 @@
 							data:{'userid':'S111','upfilestate':'0'},
 							success:function(data){
 								if(data != ""){
+									tablevip +="<div class='item uresource'><div class='selector-box'>";
+		                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' id='findalls' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
+		                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='finddai()' class='btn-selector ' target='_self'>待审核</a>";
+		                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findyi()' class='btn-selector ' target='_self'>已通过</a>";
+		                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findno()' class='btn-selector ' target='_self'>未通过</a></div>";
 									for (var i = 0; i < data.length; i++) {
-										tablevip +="<div class='item uresource'><div class='selector-box'>";
-			                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' id='findalls' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
-			                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='finddai()' class='btn-selector ' target='_self'>待审核</a>";
-			                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findyi()' class='btn-selector ' target='_self'>已通过</a>";
-		                                tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findno()' class='btn-selector ' target='_self'>未通过</a></div><ul><li><div class='card clearfix'><div class='img rar1'>";
+										if(data[i].upfilestate == 4 ){
+											data[i].upfilestate = "已删除";
+										}else{
+											data[i].upfilestate="";
+										}
+										tablevip +="<ul><li><div class='card clearfix'><div class='img rar1'>";
 		                                tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3>"+data[i].fileName+"</a></h3>";
 		                                tablevip +="<p class='brief'>sadksaldkslakdlsakdlsadksalk</p><div class='flex-box state-box'><p class='tags clearfix'><div class='state'><span class='refuse'>"+data[i].upfilestate+"</span>";
 		                                tablevip +="</div></div><div class='date'><label>上传时间：</label>"+data[i].uploadtime+"<div class='score'><label>所需积分/C币：</label>"+data[i].need_score+"</div></div>";
-		                                tablevip +="<div class='content' style='margin-left:42px;display: none' id='score_log_10980889'></div></div></li></ul></div>";
-									}									
+		                                tablevip +="<div class='content' style='margin-left:42px;display: none' id='score_log_10980889'></div></div></li></ul>";
+									}
+									tablevip +="</div>";
 								}else{
 									tablevip +="<dl><dt class='empty_icons'><img src='../mydown_files/empty_icon.png' alt='' title='' class='empty_icon'></dt>";
 									tablevip +="<dd class='empty'>提示：你还没有上传资源~<a href='javascript:void(0);'>现在去上传</a></dd></dl>";
@@ -2096,7 +2114,7 @@
 							url:'/tribune/downfilec/queryMyUp',
 							data:{'userid':'S111','upfilestate':'0'},
 							success:function(data){
-								contexts();
+								contexts(data);
 							}
 						});
 					}
@@ -2172,9 +2190,9 @@
 							data:{"uid":'S111'},
 							success:function(data){
 								if(data != 1){
-									tablevip +="<table><thead style='font-size:18px;font-weight:bold;'><tr><td style='width:150px;'>资源名称</td><td style='width:150px;'>资源类型</td><td style='width:150px;'>作者</td><td style='width:150px;'>下载时间</td></tr></thead>";
+									tablevip +="<table><thead style='font-size:18px;font-weight:bold;'><tr><td style='width:150px;'>资源名称</td><td style='width:150px;'>资源类型</td><td style='width:150px;'>作者</td><td style='width:150px;'>下载时间</td><td style='width:150px;'>积分</td></tr></thead>";
 									for (var i = 0; i < data.length; i++) {
-										tablevip +="<tbody><tr><td>"+data[i].fileName+"</td><td>"+data[i].downtypeName+"</td><td>"+data[i].nickname+"</td><td>"+data[i].downtime+"</td></tr></tbody>";
+										tablevip +="<tbody><tr><td>"+data[i].fileName+"</td><td>"+data[i].downtypeName+"</td><td>"+data[i].nickname+"</td><td>"+data[i].downtime+"</td><td>"+data[i].need_score+"</td></tr></tbody>";
 									}	
 									tablevip +="</table>";
 								}else{

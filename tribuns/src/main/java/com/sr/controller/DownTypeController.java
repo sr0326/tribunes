@@ -22,11 +22,7 @@ public class DownTypeController {
 		List<DownType> querytype = dts.queryAll();
 		model.addAttribute("querytype", querytype);
 		System.out.println(querytype);
-		return "myuploadfile";
+		return "upload";
 	}
 	
-	@RequestMapping("test")
-	public String test(){
-		return "recommend";
-	}
 }

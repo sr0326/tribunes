@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.sr.dao.UserInfoDao">
 	<!-- public UserInfo login(UserInfo u); -->
-	<select id="login" resultType="UserInfo">
+	<select id="login" resultType="com.sr.entity.UserInfo">
 		select * from userinfo
 		<where>
 			<if test="userId != null and userId != ''">

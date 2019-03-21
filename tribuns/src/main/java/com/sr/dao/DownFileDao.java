@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.sr.entity.DownFile;
+import com.sr.entity.UserInfo;
 
 @Mapper
 public interface DownFileDao{
@@ -56,4 +57,25 @@ public interface DownFileDao{
 	 * @return
 	 */
 	public List<Map<String,Object>> queryPaiming(String userid);
+	
+	/**
+	 * 添加资源
+	 * @param df
+	 * @return
+	 */
+	public int addfile(DownFile df);
+	
+	/**
+	 * 查询他的资源
+	 * @param uid
+	 * @return
+	 */
+	public List<Map<String,Object>> queryHeResour(String uid,Integer pageindex);
+	
+	/**
+	 * 查询他用户信息
+	 * @param uid
+	 * @return
+	 */
+	public UserInfo queryHeUser(String uid);
 }

@@ -1,13 +1,16 @@
 package com.sr.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sr.entity.DownFile;
 import com.sr.entity.DownType;
@@ -35,7 +38,7 @@ public class DownFileController {
 		List<DownType> querytype = dts.queryAll();
 		model.addAttribute("querytype", querytype);
 		//下载资源(所有资源)
-		List<DownFile> queryDownFile = dfs.queryDownFile(null,null,null,null,null,null);
+		List<DownFile> queryDownFile = dfs.queryDownFile(null,null,null,null,null,1);
 		model.addAttribute("queryDownFile", queryDownFile);
 		//精品推荐
 		List<DownFile> recommend = dfs.recommend();
@@ -43,12 +46,7 @@ public class DownFileController {
 		return "download";
 	}
 	
-	/**
-	 * 根据类型查询
-	 * @param downtypeid
-	 * @param filetype
-	 * @return
-	 */
+	//根据类型查询
 	@RequestMapping("queryfile")
 	@ResponseBody
 	public List<DownFile> queryfile(String downtype,String filetype){
@@ -76,7 +74,7 @@ public class DownFileController {
 			filetypeid = null;
 		}
 		System.out.println("downtypeid:"+downtypeid+",filetypeid:"+filetypeid);
-		List<DownFile> query = dfs.queryDownFile(downtypeid,null,null,null,filetypeid,null);
+		List<DownFile> query = dfs.queryDownFile(downtypeid,null,null,null,filetypeid,1);
 		System.out.println(query);
 		return query;
 	}
@@ -86,7 +84,7 @@ public class DownFileController {
 	@ResponseBody
 	public List<DownFile> findByName(String fileName){
 		System.out.println(fileName);
-		List<DownFile> byName = dfs.queryDownFile(null,fileName,null,null,null,null);
+		List<DownFile> byName = dfs.queryDownFile(null,fileName,null,null,null,1);
 		System.out.println(byName);
 		return byName;
 	}
@@ -97,7 +95,7 @@ public class DownFileController {
 		DownFile queryById = dfs.queryById(fileid);
 		model.addAttribute("queryById", queryById);
 		//根据类型查询资源
-		List<DownFile> bydowntypeid = dfs.queryDownFile(downtypeid, null,fileid,null,null,null);
+		List<DownFile> bydowntypeid = dfs.queryDownFile(downtypeid, null,fileid,null,null,1);
 		model.addAttribute("bydowntypeid", bydowntypeid);
 		//根据资源ID查询作者信息
 		DownFile queryUser = dfs.queryUser(fileid);
@@ -129,12 +127,8 @@ public class DownFileController {
 		model.addAttribute("down", queryPaiming.get(0).get("down"));
 		return "mydown";
 	}
-	
-	/**
-	 * 查询上传信息
-	 * @param userid
-	 * @return
-	 */
+
+	//查询上传信息
 	@RequestMapping("queryMyUp")
 	@ResponseBody
 	public List<DownFile> queryMyUp(String userid,Integer upfilestate){
@@ -143,5 +137,56 @@ public class DownFileController {
 		return queryMyDowns;
 	}
 	
+	//上传资源
+	@RequestMapping("uploadfile")
+	@ResponseBody
+	public void uploadfile(DownFile df,MultipartFile urlfile){
+		System.out.println(df);
+		System.out.println(urlfile);
+		//获取文件名
+		String filename = urlfile.getOriginalFilename();
+		//文件存储路径
+		String filepath = "E:/worktemp/"+UUID.randomUUID().toString().replaceAll("-", "")+"_"+filename;
+		System.out.println("save file to:" + filepath);
+		File dest = new File(filepath);
+		if (dest.getParentFile().exists()) {
+			dest.getParentFile().mkdirs();
+		}
+		try {
+			df.setUrl(filepath);
+			dfs.addfile(df);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
+	@RequestMapping("success")
+	public String success(){
+		return "uploadsuccess";
+	}
+	
+	//查询他人的资源
+	@RequestMapping("heresour")
+	public String heresour(String userid,Integer pageindex,Model model){
+		if (null == pageindex) {
+			pageindex = 1;
+		}
+		int total = 0;
+		int size = dfs.queryHeResour(userid,null).size();
+		if (size%2 == 0) {
+			total = size/2;
+		}else{
+			total = size%2+1;
+		}
+		Integer limit = (pageindex-1)*2;
+		List<Map<String, Object>> queryhe = dfs.queryHeResour(userid,limit);
+		System.out.println(limit);
+		model.addAttribute("queryhe", queryhe);
+		UserInfo heUser = dfs.queryHeUser(userid);
+		model.addAttribute("heUser", heUser);
+		model.addAttribute("total", total);
+		model.addAttribute("pageindex", pageindex);
+		model.addAttribute("size", size);
+		return "heresource";
+	}
 }

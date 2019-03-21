@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.sr.dao.DownFileDao;
 import com.sr.entity.DownFile;
+import com.sr.entity.UserInfo;
 
 @Service
 public class DownFileService {
@@ -41,5 +42,17 @@ public class DownFileService {
 	
 	public List<Map<String,Object>> queryPaiming(String userid){
 		return dfd.queryPaiming(userid);
+	}
+	
+	public int addfile(DownFile df){
+		return dfd.addfile(df);
+	}
+	
+	public List<Map<String,Object>> queryHeResour(String uid,Integer pageindex){
+		return dfd.queryHeResour(uid,pageindex);
+	}
+	
+	public UserInfo queryHeUser(String uid){
+		return dfd.queryHeUser(uid);
 	}
 }
