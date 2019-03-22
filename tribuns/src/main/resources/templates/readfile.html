@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+   <script src="/tribune/static/editor/examples/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="/tribune/static/editor/css/editormd.preview.min.css" />
+    <link rel="stylesheet" href="/tribune/static/editor/css/editormd.css" />
+    <script src="/tribune/static/editor/lib/marked.min.js"></script>
+    <script src="/tribune/static/editor/lib/prettify.min.js"></script>
+    <script src="/tribune/static/editor/editormd.min.js"></script>
+  
+  
+  
+</head>
+<body>
+   	<div id="layout"  class="editor">
+		<div id="test-editormd" style="width:800px">
+			<textarea></textarea>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" th:inline="javascript">
+    testEditor = editormd.markdownToHTML("test-editormd", {
+        markdown:[[${s}]],
+        htmlDecode      : "style,script,iframe",  // you can filter tags decode
+        emoji           : true,
+        taskList        : true,
+        tex             : true,  // 默认不解析
+        flowChart       : true,  // 默认不解析
+        sequenceDiagram : true,  // 默认不解析
+    });
+</script>
+
+</html>

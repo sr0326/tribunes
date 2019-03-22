@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.lld.dao.BlogDao">
+  <!-- 中间板块 -->
+  <select id="middle" resultType="com.lld.entity.Blog" parameterType="java.lang.String">
+  	<!-- SELECT blogTitle,blogContent,pushtime from blog -->
+  	select bl.blogTitle,bl.blogContent,bl.pushtime,us.nickname,b.typeName from userinfo us 
+  	left join blog bl  on us.userId =bl.userId 
+	left join blogtype b on b.typeid = bl.blogType
+	where us.userId=#{param1}
+  </select>
+ 
+  <!-- UserInfo 页面  博客专家 -->
+  
+  <!-- UserInfo 页面  博客专家 -->
+  <select id="bo" resultType="com.lld.entity.UserInfo">
+		select userId,pic,nickname,curjob,selfdesc from userinfo where userId=#{param1}
+  </select>
+  
+  <!-- UserInfo 中间  显示 和此人头像有关的数据 -->
+  <!-- <select id="center" resultType="Blog" parameterType="java.lang.Integer">
+  	select bl.blogTitle,bl.blogContent,bl.pushtime,us.nickname,b.typeName from userinfo us 
+  	left join blog bl  on us.userId =bl.userId 
+	left join blogtype b on b.typeid = bl.blogType
+	where us.nickname=#{param1}
+  </select> -->
+</mapper>

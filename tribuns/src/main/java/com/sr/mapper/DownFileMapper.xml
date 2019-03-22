@@ -108,17 +108,26 @@
 	
 	<!-- public List<Map<String,Object>> queryPaiming(String userid); -->
 	<select id="queryPaiming" resultType="Map">
-		select ui.integral,count(df.fileId) upload,dre.down,pm.rownum,
-		ui.userId from (select u.userId,u.integral,u.rownum from 
-		(select obj.userId,obj.integral,@rownum:=@rownum+1 as num_tmp,
-		@incrnum:=case when @rowtotal=obj.integral then @incrnum when 
-		@rowtotal:=obj.integral then @rownum end as rownum from 
-		(select userId,integral from userinfo order by integral desc) 
-		as obj,(select @rownum:=0,@rowtotal:=null,@incrnum:=0) r) as u 
-		where u.userId=#{userid}) pm,(select count(downid) down from 
-		downresource where userid=#{userid}) dre, userinfo ui,downfile df 
-		where df.userid=ui.userId and df.userid=#{userid} group by 
-		ui.integral,dre.down,ui.userId,pm.rownum
+		select u.userId,u.integral,u.rownum from 
+		(select obj.userId,obj.integral,@rownum:=@rownum+1 as 
+		num_tmp,@incrnum:=case when @rowtotal=obj.integral 
+		then @incrnum when @rowtotal:=obj.integral then @rownum 
+		end as rownum from (select userId,integral from userinfo 
+		order by integral desc) as obj,
+		(select @rownum:=0,@rowtotal:=null,@incrnum:=0) r) as u
+		 where u.userId=#{uid}
+	</select>
+	
+	<!-- public List<Map<String,Object>> downnum(String userid); -->
+	<select id="downnum" resultType="Map">
+		select count(downid) down from downresource 
+		where userid=#{uid}
+	</select>
+
+	<!-- public List<Map<String,Object>> uploadnum(String userid); -->
+	<select id="uploadnum" resultType="Map">
+		select count(fileid) uploads from downfile where 
+		upfilestate=1 and userid=#{uid}
 	</select>
 	
 	<!-- public int addfile(DownFile df); -->

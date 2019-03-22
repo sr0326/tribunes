@@ -60,10 +60,8 @@
 
 <meta name="author" content="CSDN">
 <meta name="Copyright" content="CSDN">
-<script type="text/javascript" async=""
-	src="../mydown_files/auto_dup"></script>
-<link rel="apple-touch-icon"
-	href="https://csdnimg.cn/public/favicon.ico">
+<script type="text/javascript" async="" src="/tribune/static/mydown_files/auto_dup"></script>
+<link rel="apple-touch-icon" href="https://csdnimg.cn/public/favicon.ico">
 <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
 <script type="text/javascript">
 	var dl_cdn_url = '//csdnimg.cn/release/download';
@@ -71,40 +69,21 @@
 	var needInsertBaidu = false;
 	var dl_cdn_version = '201812141445';
 </script>
-<link rel="stylesheet"
-	href="../mydown_files/content_toolbar.css">
-<link rel="stylesheet"
-	href="../mydown_files/font-awesome.min.css">
-<link rel="stylesheet"
-	href="../mydown_files/bootstrap.css">
-<!--<link rel="stylesheet" href="/css/iconfont.css?/v=">-->
-<link rel="stylesheet" href="../mydown_files/common.css">
-<link rel="stylesheet"
-	href="../mydown_files/download_new.css">
+<link rel="stylesheet" href="/tribune/static/mydown_files/content_toolbar.css">
+<link rel="stylesheet" href="/tribune/static/mydown_files/font-awesome.min.css">
+<link rel="stylesheet" href="/tribune/static/mydown_files/bootstrap.css">
+<link rel="stylesheet" href="/tribune/static/mydown_files/common.css">
+<link rel="stylesheet" href="/tribune/static/mydown_files/download_new.css">
 <link rel="canonical" href="http://download.csdn.net/my/uploads">
-<link rel="stylesheet" type="text/css"
-	href="../mydown_files/goTop.min.css">
-<link rel="stylesheet"
-	href="../mydown_files/user-sms-verification.css">
-<link rel="stylesheet" type="text/css"
-	href="../mydown_files/check-adb.css">
-<style type="text/css"></style>
-<style type="text/css"></style>
-<style type="text/css"></style>
-<style type="text/css"></style>
-<style type="text/css"></style>
-<style type="text/css"></style>
-<style type="text/css"></style>
-<style type="text/css"></style>
-<style type="text/css"></style>
-<style type="text/css"></style>
-<style type="text/css"></style>
+<link rel="stylesheet" type="text/css" href="/tribune/static/mydown_files/goTop.min.css">
+<link rel="stylesheet" href="/tribune/static/mydown_files/user-sms-verification.css">
+<link rel="stylesheet" type="text/css" href="/tribune/static/mydown_files/check-adb.css">
 </head>
 <body>
 	<div id="BAIDU_DUP_fp_wrapper"
 		style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;">
 		<iframe id="BAIDU_DUP_fp_iframe"
-			src="../mydown_files/o.html"
+			src="/tribune/static/mydown_files/o.html"
 			style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe>
 	</div>
 	<svg aria-hidden="true"
@@ -1887,7 +1866,7 @@
 							ヽ(✿ﾟ▽ﾟ)ノ</div></li>
 					<li class="gitChat upload msgBox" id="msgBox"><a
 						target="_blank" class="" href="https://i.csdn.net/#/msg/index"><img
-							src="../mydown_files/message-icon.png" alt=""
+							src="/tribune/static/mydown_files/message-icon.png" alt=""
 							class="message"><span>消息</span>
 						<div class="toolbar-circle" id="msg-circle"></div></a>
 						<div class="msgList" id="msgList">
@@ -1906,7 +1885,7 @@
 					<li class="userLogin">
 						<div class="loginCenter">
 							<a href="https://i.csdn.net/" target="_blank"><img
-								class="login_img" src="../mydown_files/2_sr9089"></a>
+								class="login_img" src="/tribune/static/mydown_files/2_sr9089"></a>
 						</div>
 						<div class="userControl">
 							<div class="bord">
@@ -1975,9 +1954,9 @@
 	<div class="news-nav">
 		<div class="container clearfix">
 			<div class="nav-bar">
-				<a th:href="@{/downfilec/queryDownFile}">下载首页</a>
-				<a href="https://download.csdn.net/my" class="current">我的资源</a> 
-				<a class="nav_upload " th:href="@{/downtypec/queryTypeAll}">上传资源赚积分</a>
+				<a th:href="@{/downfilec/queryDownFile}" class=" ">下载首页</a>
+				<a th:href="@{/downfilec/myResources(userid=${session.userintro.userId})}" class="current">我的资源</a> 
+				<a class=" " th:href="@{/downtypec/queryTypeAll}">上传资源赚积分</a>
 				<a class=" " href="https://download.csdn.net/my/favs">我的收藏</a>
 			</div>
 			<div class="search-download">
@@ -1987,17 +1966,19 @@
 		</div>
 	</div>
 	<!-- //toolbar nav -->
-	<link rel="stylesheet" href="../mydown_files/download_profile.css">
+	<link rel="stylesheet" href="/tribune/static/mydown_files/download_profile.css">
 	<div class="meeting_main">
 		<div class="download_profile clearfix">
 			<div class="profile_card clearfix">
 				<div class="cardl">
 					<div class="user_img">
-						<img th:src="${login.pic}" alt="猴子搬来的救兵WooYun" title="猴子搬来的救兵WooYun" class="avatar">
+						<input type="hidden" id="uid" th:value="${session.userintro.userId}">
+						<img th:src="${session.userintro.pic}" alt="" title="" class="avatar">
 					</div>
 					<div class="brief">
 						<div class="name">
-							<span th:text="${login.nickname}"></span>
+							<!-- <span th:hide="${login.userId}" id=""></span>  -->
+							<span th:text="${session.userintro.nickname}"></span>
 						</div>
 						<p class="right clearfix">
 							<span>
@@ -2006,10 +1987,10 @@
 						</p>
 					</div>
 					<ul class="datas clearfix">
-						<li><label>积分</label><span th:text="${integral}"></span></li>
+						<li><label  onclick="myscore()">积分</label><span th:text="${integral}"></span></li>
 						<li><label>总排名</label><span th:text="${rownum}"></span></li>
-						<li><label>上传资源</label><span th:text="${upload}"></span></li>
-						<li><label>下载资源</label><span th:text="${down}"></span></li>
+						<li><label onclick="findyi()">上传资源</label><span th:text="${upload}"></span></li>
+						<li><label onclick="mydownfiles()">下载资源</label><span th:text="${down}"></span></li>
 					</ul>
 				</div>
 				<div class="cardr">
@@ -2033,9 +2014,10 @@
 						<div id="vip" class="list-container mb-bg"></div>
 					</div>
 				</div>
-				<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+				<script type="text/javascript" src="/tribune/static/js/jquery-3.1.1.js"></script>
 				<script type="text/javascript">
 					var tablevip = "";
+					var uid = $("#uid").val();
 					function contexts(data){
 						if(data != ""){
 							tablevip +="<div class='item uresource'><div class='selector-box'>";
@@ -2050,7 +2032,7 @@
 									data[i].upfilestate="";
 								}
 								tablevip +="<ul><li><div class='card clearfix'><div class='img rar1'>";
-                                tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3>"+data[i].fileName+"</a></h3>";
+                                tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3><a href='/tribune/downfilec/queryById?fileid="+data[i].fileId+"&downtypeid="+data[i].downtypeid+"&userid="+data[i].userid+"'>"+data[i].fileName+"</a></h3>";
                                 tablevip +="<p class='brief'>sadksaldkslakdlsakdlsadksalk</p><div class='flex-box state-box'><p class='tags clearfix'><div class='state'><span class='refuse'>"+data[i].upfilestate+"</span>";
                                 tablevip +="</div></div><div class='date'><label>上传时间：</label>"+data[i].uploadtime+"<div class='score'><label>所需积分/C币：</label>"+data[i].need_score+"</div></div>";
                                 tablevip +="<div class='content' style='margin-left:42px;display: none' id='score_log_10980889'></div></div></li></ul>";
@@ -2078,7 +2060,7 @@
 						$("#myfavorite").prop('class','');
 						$.ajax({
 							url:'/tribune/downfilec/queryMyUp',
-							data:{'userid':'S111','upfilestate':'0'},
+							data:{'userid':uid,'upfilestate':'0'},
 							success:function(data){
 								if(data != ""){
 									tablevip +="<div class='item uresource'><div class='selector-box'>";
@@ -2089,11 +2071,13 @@
 									for (var i = 0; i < data.length; i++) {
 										if(data[i].upfilestate == 4 ){
 											data[i].upfilestate = "已删除";
+											tablevip +="<ul><li><div class='card clearfix'><div class='img rar1'>";
+			                                tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3><a onclick='statefour()' href='javascript:void(0);'>"+data[i].fileName+"</a></h3>";
 										}else{
+											tablevip +="<ul><li><div class='card clearfix'><div class='img rar1'>";
+			                                tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3><a href='/tribune/downfilec/queryById?fileid="+data[i].fileId+"&downtypeid="+data[i].downtypeid+"&userid="+data[i].userid+"'>"+data[i].fileName+"</a></h3>";
 											data[i].upfilestate="";
 										}
-										tablevip +="<ul><li><div class='card clearfix'><div class='img rar1'>";
-		                                tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3>"+data[i].fileName+"</a></h3>";
 		                                tablevip +="<p class='brief'>sadksaldkslakdlsakdlsadksalk</p><div class='flex-box state-box'><p class='tags clearfix'><div class='state'><span class='refuse'>"+data[i].upfilestate+"</span>";
 		                                tablevip +="</div></div><div class='date'><label>上传时间：</label>"+data[i].uploadtime+"<div class='score'><label>所需积分/C币：</label>"+data[i].need_score+"</div></div>";
 		                                tablevip +="<div class='content' style='margin-left:42px;display: none' id='score_log_10980889'></div></div></li></ul>";
@@ -2112,7 +2096,7 @@
 						tablevip = "";
 						$.ajax({
 							url:'/tribune/downfilec/queryMyUp',
-							data:{'userid':'S111','upfilestate':'0'},
+							data:{'userid':uid,'upfilestate':'0'},
 							success:function(data){
 								contexts(data);
 							}
@@ -2123,18 +2107,20 @@
 						tablevip = "";
 						$.ajax({
 							url:'/tribune/downfilec/queryMyUp',
-							data:{'userid':'S111','upfilestate':'3'},
+							data:{'userid':uid,'upfilestate':'3'},
 							success:function(data){
 								contexts(data);
 							}
 						});
 					}
-					
+					function statefour(){
+						alert("已删除，不可以查看！");
+					}
 					function finddai(){
 						tablevip = "";
 						$.ajax({
 							url:'/tribune/downfilec/queryMyUp',
-							data:{'userid':'S111','upfilestate':'2'},
+							data:{'userid':uid,'upfilestate':'2'},
 							success:function(data){
 								contexts(data);
 							}
@@ -2145,7 +2131,7 @@
 						tablevip = "";
 						$.ajax({
 							url:'/tribune/downfilec/queryMyUp',
-							data:{'userid':'S111','upfilestate':'1'},
+							data:{'userid':uid,'upfilestate':'1'},
 							success:function(data){
 								contexts(data);
 							}
@@ -2160,7 +2146,7 @@
 						$("#myfavorite").prop('class','');
 						$.ajax({
 							url:'/tribune/downresourcec/queryFileById',
-							data:{"uid":'S111'},
+							data:{"uid":uid},
 							success:function(data){
 								if(data != null){
 									tablevip +="<table><thead  style='font-size:18px;font-weight:bold;'><tr><td style='width:180px;'>积分</td><td style='width:180px;'>时间</td><td style='width:180px;'>下载资源</td><td>剩余积分</td></tr></thead>";
@@ -2187,10 +2173,10 @@
 						$("#mydownfiles").prop('class','cur');
 						$.ajax({
 							url:'/tribune/downresourcec/queryFileById',
-							data:{"uid":'S111'},
+							data:{"uid":uid},
 							success:function(data){
 								if(data != 1){
-									tablevip +="<table><thead style='font-size:18px;font-weight:bold;'><tr><td style='width:150px;'>资源名称</td><td style='width:150px;'>资源类型</td><td style='width:150px;'>作者</td><td style='width:150px;'>下载时间</td><td style='width:150px;'>积分</td></tr></thead>";
+									tablevip +="<table><thead style='font-size:18px;font-weight:bold;'><tr><td style='width:150px;'>资源名称</td><td style='width:150px;'>资源类型</td><td style='width:150px;'>作者</td><td style='width:150px;'>下载时间</td><td style='width:150px;'>所需积分</td></tr></thead>";
 									for (var i = 0; i < data.length; i++) {
 										tablevip +="<tbody><tr><td>"+data[i].fileName+"</td><td>"+data[i].downtypeName+"</td><td>"+data[i].nickname+"</td><td>"+data[i].downtime+"</td><td>"+data[i].need_score+"</td></tr></tbody>";
 									}	
@@ -2263,12 +2249,12 @@
 
         $("#delreason").focus(function () {
             $(':input:radio:checked').attr("checked", false);
-        })
+        });
         $("#delreason").blur(function () {
             if ($("#delreason").val() == '') {
                 $("#del_reason_form input").first().attr("checked", true);
             }
-        })
+        });
     }
 //我知道了
     $('.update_tips_btn .up_ok').click(function () {

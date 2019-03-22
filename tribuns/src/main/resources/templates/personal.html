@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://i.csdn.net/#/uc/profile -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="referrer" content="always">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="force-rendering" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="track" content="">
+<link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+<link rel="stylesheet" href="/tribune/static/files/skeleton.css">
+<link rel="stylesheet" href="/tribune/static/files/content_toolbar.css">
+<link href="/tribune/static/files/app.003656b634973f9d24a324c4ad137abd.css" rel="stylesheet">
+
+<script type="text/javascript" src="/tribune/static/js/jquery-3.3.1.js"></script>
+<title>个人资料-个人中心-CSDN</title>
+</head>
+<body>
+	<div id="csdn-toolbar" class="csdn-toolbar tb_disnone ">
+		<div class="container row center-block ">
+			<ul class="pull-left left-menu clearfix" id="nav-left-menu">
+				<li><a href="https://www.csdn.net/" title="CSDN首页"><svg
+							class="toolbar-icon" aria-hidden="true">
+							<use xlink:href="#gonggong_csdnlogo_"></use></svg></a></li>
+				<li><a href="https://www.csdn.net/" class="toolbar_to_feed"
+					title="首页" style="margin-left:0">首页</a></li>
+				<li><a href="" class="toolbar_to_feed"
+					title="博客">博客</a></li>
+				<li><a href="downfilec/queryDownFile" title="下载">下载</a></li>
+				<li><a href="https://bbs.csdn.net/" title="论坛">论坛</a></li>
+				
+			</ul>
+			<div class="pull-right login-wrap ">
+				<ul class="btns">
+					<li
+						class="toolbar-tracking csdn-tracking-statistics tracking-click"
+						data-mod="popu_369"><a href="https://i.csdn.net/#"
+						style="padding:0" target="_blank"></a></li>
+					<li>
+						<div class="search_bar csdn-tracking-statistics tracking-click"
+							data-mod="popu_366">
+							<input type="text" class="input_search" name=""
+								id="toolber-keyword" placeholder="搜CSDN" autocomplete="off">
+							<a href="https://so.csdn.net/so/" target="_blank"
+								class="btn-nobg-noborder btn-search"><svg
+									class="toolbar-icon" aria-hidden="true">
+									<use xlink:href="#sousuo"></use></svg></a>
+						</div>
+					</li>
+					<li class="write-bolg-btn csdn-tracking-statistics tracking-click"
+						data-mod="popu_370"><a class=""
+						href="write" target="_blank" id="blogClick"><svg
+								class="toolbar-icon" aria-hidden="true">
+								<use xlink:href="#xieboke1"></use></svg><span>写博客</span></a>
+						</li>
+					<li class="gitChat upload msgBox" id="msgBox"><a
+						target="_blank" class="" href="https://i.csdn.net/#/msg/index"><img
+							src="/tribune/static/files/message-icon.png" alt="" class="message"><span>消息</span>
+							<div class="toolbar-circle" id="msg-circle"></div></a>
+						<div class="msgList" id="msgList">
+							<a href="https://i.csdn.net/#/msg/index">评论<em
+								class="comment"></em></a> <a
+								href="https://i.csdn.net/#/msg/attention">关注<em
+								class="follow"></em></a> <a href="https://i.csdn.net/#/msg/like">点赞<em
+								class="thumb_up"></em></a> <a
+								href="https://i.csdn.net/#/msg/notice">系统通知<em
+								class="system"></em></a>
+						</div></li>
+					<li class="userinfo"><a
+						href="https://passport.csdn.net/account/login" target="_blank">登录</a><span></span><a
+						href="https://passport.csdn.net/account/login" target="_blank">注册</a></li>
+					<li class="userLogin">
+						<div class="loginCenter">
+							<a href="https://i.csdn.net/" target="_blank"><img
+								class="login_img" src="/tribune/static/files/2_sr9089"></a>
+						</div>
+						<div class="userControl">
+							<div class="bord">
+								<div>
+									<i class="pull_icon pull_icon1"></i><a
+										href="https://www.csdn.net/nav/watchers" target="_blank">我的关注</a>
+								</div>
+								<div>
+									<i class="pull_icon pull_icon2"></i><a
+										href="https://i.csdn.net/#/uc/favorite-list" target="_blank">我的收藏</a>
+								</div>
+								<div>
+									<i class="pull_icon pull_icon4"></i><a
+										href="https://i.csdn.net/#/uc/profile" target="_blank">个人中心</a>
+								</div>
+								<div>
+									<i class="pull_icon pull_icon7"></i><a
+										href="https://i.csdn.net/#/account/index" target="_blank">帐号设置</a>
+								</div>
+							</div>
+							<div class="bord">
+								<div>
+									<i class="pull_icon pull_icon5"></i><a
+										href="https://blog.csdn.net/sr9089" target="_blank">我的博客</a>
+								</div>
+								<div>
+									<i class="pull_icon pull_icon6"></i><a
+										href="https://mp.csdn.net/" target="_blank">管理博客</a>
+								</div>
+								<div>
+									<i class="pull_icon pull_icon12"></i><a
+										href="https://edu.csdn.net/mycollege" target="_blank">我的学院</a>
+								</div>
+								<div>
+									<i class="pull_icon pull_icon13"></i><a
+										href="https://download.csdn.net/my/downloads" target="_blank">我的下载</a>
+								</div>
+							</div>
+							<div class="bord">
+								<div>
+									<i class="pull_icon pull_icon8"></i><a
+										href="https://my.csdn.net/my/score" target="_blank">我的C币</a>
+								</div>
+								<div>
+									<i class="pull_icon pull_icon9"></i><a
+										href="https://order.csdn.net/myorder" target="_blank">订单中心</a>
+								</div>
+							</div>
+							<div class="bord">
+								<div>
+									<i class="pull_icon pull_icon10"></i><a
+										href="https://blog.csdn.net/home/help.html" target="_blank">帮助</a>
+								</div>
+								<div>
+									<i class="pull_icon pull_icon11"></i><a
+										href="javascript:void(0);" class="logout">退出</a>
+								</div>
+							</div>
+						</div>
+						<div class="guo_tip_box">关注和收藏在这里</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="app">
+		<!---->
+		<div data-v-357a65ed="" class="container view">
+			<div data-v-357a65ed="" class="left_box">
+				<ul data-v-357a65ed="" class="aside">
+					<li data-v-357a65ed=""><a
+						data-v-357a65ed="" href="javascript:show(1)"
+						class="zl">个人资料</a></li>
+					<li data-v-357a65ed="" class=""><a data-v-357a65ed=""
+						href="javascript:show(2)" class="zl">我的收藏</a></li>
+					<li data-v-357a65ed="" class=""><a data-v-357a65ed=""
+						href="javascript:show(3)" class="zl">我的关注</a></li>
+					<li data-v-357a65ed="" class=""><a data-v-357a65ed=""
+						href="javascript:show(4)" class="zl">我的粉丝</a></li>
+				</ul>
+				<ul data-v-357a65ed="" class="aside">
+					<li data-v-357a65ed=""><a data-v-357a65ed=""
+						href="javascript:void(0)" target="_blank" class="zl">我的博客</a></li>
+					<li data-v-357a65ed=""><a data-v-357a65ed=""
+						href="javascript:void(0)" target="_blank"
+						class="zl">我的下载</a></li>
+					<li data-v-357a65ed=""><a data-v-357a65ed=""
+						href="javascript:void(0)" target="_blank" class="zl">我的论坛</a></li>
+				</ul>
+			</div>
+			<div data-v-357a65ed="" class="view-container" style="" id="grzl">
+				<div data-v-0d738edb="" data-v-357a65ed="" class="cont view">
+					<div data-v-0d738edb="" class="right_cont">
+						<h3 data-v-0d738edb="" class="title">个人资料</h3>
+						<div data-v-0d738edb="" class="user_info">
+							<div data-v-0d738edb="" class="header">
+								<img data-v-0d738edb="" src="/tribune/static/files/1_sr9089" alt=""
+									class="head">
+								<p data-v-0d738edb="" class="modify" >修改头像</p>
+							</div>
+							<!---->
+							<div data-v-0d738edb="" class="right_c">
+								<div data-v-0d738edb="" class="right_info">
+									<div data-v-0d738edb="" class="id_card">
+										<span data-v-0d738edb="" class="id_name">ID：<span th:text="${session.userintro.userId}"></span></span>
+									</div>
+								</div>
+								<div data-v-0d738edb="" class="csdn_info">
+									<span data-v-0d738edb=""
+										style="margin-right: 16px; color: rgb(77, 77, 77); font-size: 14px;">关注
+										2</span> <span data-v-0d738edb=""
+										style="margin-right: 16px; color: rgb(77, 77, 77); font-size: 14px;">粉丝
+										0</span> <span data-v-0d738edb="" class="splits">|</span> <span
+										data-v-0d738edb=""
+										style="margin-right: 8px; color: rgb(77, 77, 77); font-size: 14px;">C币
+										0</span> <a data-v-0d738edb="" href="https://mall.csdn.net/vip_code"
+										class="charge">充值</a>
+								</div>
+								<div data-v-0d738edb="" class="line"></div>
+								<div id="show">
+								<div data-v-0d738edb="" class="nick">
+									<span data-v-0d738edb="">昵称:<span th:text=${session.userintro.nickname}></span></span> 
+									<a data-v-0d738edb="" class="mod" onclick="change()">修改资料</a>
+								</div >
+								<ul data-v-0d738edb="" class="self">
+									 <li data-v-0d738edb="" class="comon">实名：<span th:text=${session.userintro.realName}></span></li>
+									<li data-v-0d738edb="" class="comon">性别：<span th:text="${session.userintro.sex}==0?'男':'女'"></span></li>
+									<li data-v-0d738edb="" class="comon">生日：<span th:text="${#dates.format(session.userintro.birthday, 'yyyy-MM-dd HH:mm')}"></span></li>
+									<li data-v-0d738edb="" class="comon">行业：<span th:text=${session.userintro.nickname}></span></li>
+									<li data-v-0d738edb="" class="comon last">职位：<span th:text=${session.userintro.curjob}></span></li>
+									<li data-v-0d738edb="" class="intro"><span
+										data-v-0d738edb="" class="noWid">简介：<span th:text=${session.userintro.selfdesc}></span></span><span
+										data-v-0d738edb="" class="cont"></span></li> 
+								</ul>
+								</div>
+								<div id="userform" style="display:none">
+									  <form class="" style="width:250px; margin-top:20px">
+										<div class="form-group" style=" margin-top:5px">
+											<label for="exampleInputEmail1">昵称</label> <input
+												type="text" class="form-control" id="exampleInputEmail1"
+												>
+										</div>
+										
+										<div class="form-group" style=" margin-top:10px">
+											<label for="exampleInputEmail1">实名</label> <input
+												type="text" class="form-control" id="exampleInputEmail1"
+												placeholder="">
+										</div>
+										<div class="form-group" style=" margin-top:10px">
+											<label for="exampleInputEmail1">性别</label> 
+											<select class="form-control" style="width:155px">
+												<option>男</option>
+												<option>女</option>
+											</select>
+										</div>
+										<div class="form-group" style=" margin-top:10px">
+											<label for="exampleInputEmail1">生日</label> 
+											<input
+												type="text" class="form-control" id="exampleInputEmail1"
+												placeholder="">
+										</div>
+										<div class="form-group" style=" margin-top:10px">
+											<label for="exampleInputEmail1">职位</label> 
+											<input
+												type="text" class="form-control" id="exampleInputEmail1"
+												placeholder="">
+										</div>
+										<div class="form-group" style=" margin-top:10px">
+											<label for="exampleInputEmail1">简介</label> 
+											<textarea class="form-control" rows="3"></textarea>
+										</div>
+										<div>
+											<button>确定修改</button>
+											<button onclick="change(2)">取消</button>
+										</div>
+									  </form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div data-v-0d738edb="" class="modi_dialog" style="display:none">
+						<div data-v-0d738edb="" class="vue-image-crop-upload">
+							<div data-action="vicp-wrap" class="vicp-wrap">
+								<div class="vicp-close">
+									<i class="vicp-icon4 vic-icon">x</i>
+								</div>
+								<h3 data-action="vicp-wrap" class="upword">上传头像</h3>
+								<h3 data-action="vicp-wrap" class="upword"
+									style="display: none;" >修改头像</h3>
+								<div class="vicp-step1">
+									<div class="vicp-drop-area">
+										<img
+											src=""
+											alt="" class="vicp-icon1"> <span class="vicp-hint">点击或拖动图片至此处</span>
+										<span class="vicp-no-supported-hint" style="display: none;">浏览器不支持该功能，请使用IE10以上或其他现在浏览器！</span>
+										<input type="file" style="display: none;">
+									</div>
+									<div class="vicp-operate">
+										<a>取消</a>
+									</div>
+								</div>
+								<p data-action="vicp-wrap" class="img_tip1">图片宽度*高度至少为150*150像素，大小不超过2MB</p>
+								<canvas width="150" height="150" style="display: none;"></canvas>
+							</div>
+						</div>
+					</div>
+					<!---->
+				</div>
+				
+			</div>
+			<div data-v-357a65ed="" class="view-container" style="display:none" id="wdsc">
+				<div data-v-0d738edb="" data-v-357a65ed="" class="cont view">
+					<div data-v-0d738edb="" class="right_cont">
+						<h3 data-v-0d738edb="" class="title">我的收藏</h3>
+					</div>
+					<div id="">
+						我的收藏（收藏博客）
+					</div>
+				</div>	
+			</div>
+			<div data-v-357a65ed="" class="view-container" style="display:none" id="wdgz">
+				<div data-v-0d738edb="" data-v-357a65ed="" class="cont view">
+					<div data-v-0d738edb="" class="right_cont">
+						<h3 data-v-0d738edb="" class="title">我的关注</h3>
+					</div>
+					<div>
+						我的关注（关注的用户）
+					</div>
+				</div>	
+			</div>
+			<div data-v-357a65ed="" class="view-container" style="display:none" id="wdfs">
+				<div data-v-0d738edb="" data-v-357a65ed="" class="cont view">
+					<div data-v-0d738edb="" class="right_cont">
+						<h3 data-v-0d738edb="" class="title">我的粉丝</h3>
+					</div>
+					<div>
+						我的粉丝（粉丝）
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		function show(obj){
+			//$(this).parent("li").attr("class","router-link-exact-active router-link-active");
+			if(obj==1){
+				$("#grzl").show();
+				$("#wdsc").hide();
+				$("#wdgz").hide();
+				$("#wdfs").hide();
+			}else if(obj==2){
+				$("#grzl").hide();
+				$("#wdsc").show();
+				$("#wdgz").hide();
+				$("#wdfs").hide();
+
+			}else if(obj==3){
+				$("#grzl").hide();
+				$("#wdsc").hide();
+				$("#wdgz").show();
+				$("#wdfs").hide();
+			}else if(obj==4){
+				$("#grzl").hide();
+				$("#wdsc").hide();
+				$("#wdgz").hide();
+				$("#wdfs").show();
+			}
+		}
+		function change(obj){
+			if(obj==2){
+				$("#show").show();
+				$("#userform").hide();
+			}else{
+				$("#show").hide();
+				$("#userform").show();
+			}
+			
+		}
+	</script>
+</body>
+</html>

@@ -44,6 +44,14 @@ public class DownFileService {
 		return dfd.queryPaiming(userid);
 	}
 	
+	public List<Map<String,Object>> downnum(String userid){
+		return dfd.downnum(userid);
+	}
+	
+	public List<Map<String,Object>> uploadnum(String userid){
+		return dfd.uploadnum(userid);
+	}
+	
 	public int addfile(DownFile df){
 		return dfd.addfile(df);
 	}
@@ -55,4 +63,5 @@ public class DownFileService {
 	public UserInfo queryHeUser(String uid){
 		return dfd.queryHeUser(uid);
 	}
+
 }

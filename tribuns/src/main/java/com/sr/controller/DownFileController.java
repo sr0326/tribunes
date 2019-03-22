@@ -17,7 +17,6 @@ import com.sr.entity.DownType;
 import com.sr.entity.UserInfo;
 import com.sr.service.DownFileService;
 import com.sr.service.DownTypeService;
-import com.sr.service.UserInfoService;
 
 @Controller
 @RequestMapping("downfilec")
@@ -29,8 +28,6 @@ public class DownFileController {
 	@Autowired
 	DownTypeService dts;
 	
-	@Autowired
-	UserInfoService ufs;
 	//下载首页
 	@RequestMapping("queryDownFile")
 	public String queryDownFile(Model model){
@@ -82,9 +79,31 @@ public class DownFileController {
 	//模糊搜索
 	@RequestMapping("findByName")
 	@ResponseBody
-	public List<DownFile> findByName(String fileName){
-		System.out.println(fileName);
-		List<DownFile> byName = dfs.queryDownFile(null,fileName,null,null,null,1);
+	public List<DownFile> findByName(String fileName,String downtype,String filetype){
+		Integer downtypeid = 0;
+		Integer filetypeid = 0;
+		List<DownType> querytype = dts.queryAll();
+		if (downtype.length()<10) {
+			for (DownType down : querytype) {
+				if (downtype.equals(down.getDowntypeName()+",")) {
+					downtypeid = down.getDowntypeid();
+				}
+			}
+		}else{
+			downtypeid = null;
+		}
+		if ("文档类,".equals(filetype)) {
+			filetypeid = 1;
+		}else if ("代码类,".equals(filetype)) {
+			filetypeid = 2;
+		}else if ("工具类,".equals(filetype)) {
+			filetypeid = 3;
+		}else if ("其他,".equals(filetype)) {
+			filetypeid = 4;
+		}else{
+			filetypeid = null;
+		}
+		List<DownFile> byName = dfs.queryDownFile(downtypeid,fileName,null,null,filetypeid,1);
 		System.out.println(byName);
 		return byName;
 	}
@@ -94,6 +113,7 @@ public class DownFileController {
 	public String queryById(Integer fileid,String userid,Integer downtypeid,Model model){
 		DownFile queryById = dfs.queryById(fileid);
 		model.addAttribute("queryById", queryById);
+		System.out.println(queryById);
 		//根据类型查询资源
 		List<DownFile> bydowntypeid = dfs.queryDownFile(downtypeid, null,fileid,null,null,1);
 		model.addAttribute("bydowntypeid", bydowntypeid);
@@ -116,15 +136,14 @@ public class DownFileController {
 	//我的资源
 	@RequestMapping("myResources")
 	public String myResources(String userid,Model model){
-		UserInfo u = new UserInfo();
-		u.setUserId(userid);
-		UserInfo login = ufs.login(u);
-		model.addAttribute("login", login);
+		System.out.println(userid);
 		List<Map<String, Object>> queryPaiming = dfs.queryPaiming(userid);
+		List<Map<String, Object>> downnum = dfs.downnum(userid);
+		List<Map<String, Object>> uploadnum = dfs.uploadnum(userid);
 		model.addAttribute("rownum", queryPaiming.get(0).get("rownum"));
 		model.addAttribute("integral", queryPaiming.get(0).get("integral"));
-		model.addAttribute("upload", queryPaiming.get(0).get("upload"));
-		model.addAttribute("down", queryPaiming.get(0).get("down"));
+		model.addAttribute("upload", uploadnum.get(0).get("uploads"));
+		model.addAttribute("down", downnum.get(0).get("down"));
 		return "mydown";
 	}
 
@@ -132,6 +151,7 @@ public class DownFileController {
 	@RequestMapping("queryMyUp")
 	@ResponseBody
 	public List<DownFile> queryMyUp(String userid,Integer upfilestate){
+		System.out.println(userid+","+upfilestate);
 		List<DownFile> queryMyDowns = dfs.queryDownFile(null, null, null, userid,null,upfilestate);
 		System.out.println(queryMyDowns);
 		return queryMyDowns;
@@ -168,6 +188,7 @@ public class DownFileController {
 	//查询他人的资源
 	@RequestMapping("heresour")
 	public String heresour(String userid,Integer pageindex,Model model){
+		System.out.println(userid);
 		if (null == pageindex) {
 			pageindex = 1;
 		}
@@ -176,11 +197,11 @@ public class DownFileController {
 		if (size%2 == 0) {
 			total = size/2;
 		}else{
-			total = size%2+1;
+			total = size/2+1;
 		}
 		Integer limit = (pageindex-1)*2;
 		List<Map<String, Object>> queryhe = dfs.queryHeResour(userid,limit);
-		System.out.println(limit);
+		System.out.println(total);
 		model.addAttribute("queryhe", queryhe);
 		UserInfo heUser = dfs.queryHeUser(userid);
 		model.addAttribute("heUser", heUser);

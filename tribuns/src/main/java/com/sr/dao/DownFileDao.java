@@ -59,6 +59,19 @@ public interface DownFileDao{
 	public List<Map<String,Object>> queryPaiming(String userid);
 	
 	/**
+	 * 查询用户下载数量
+	 * @param userid
+	 * @return
+	 */
+	public List<Map<String,Object>> downnum(String userid);
+	
+	/**
+	 * 查询用户上传数量
+	 * @param userid
+	 * @return
+	 */
+	public List<Map<String,Object>> uploadnum(String userid);
+	/**
 	 * 添加资源
 	 * @param df
 	 * @return
@@ -78,4 +91,5 @@ public interface DownFileDao{
 	 * @return
 	 */
 	public UserInfo queryHeUser(String uid);
+
 }

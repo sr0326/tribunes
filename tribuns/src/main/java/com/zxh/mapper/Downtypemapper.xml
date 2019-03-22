@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zxh.dao.DownTypezxhDao">
+  	<select id="querydowntype" resultType="com.zxh.entity.Downtypezxh">
+  		select * from downtype
+  	</select>
+</mapper>

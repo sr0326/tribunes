@@ -23,6 +23,6 @@ public class DownTypeController {
 		model.addAttribute("querytype", querytype);
 		System.out.println(querytype);
 		return "upload";
+		/*return "myuploadfile";*/
 	}
-	
 }

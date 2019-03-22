@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://passport.csdn.net/login -->
+<html translate="no" lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="referrer" content="always">
+<meta name="renderer" content="webkit">
+<meta name="force-rendering" content="webkit">
+<meta name="description" content="CSDN登录注册">
+<meta name="google" value="notranslate">
+<title>CSDN-专业IT技术社区</title>
+
+<link href="/tribune/static/files/common.f73929e078fd23fdbb6e0005239e7b2f.css" rel="stylesheet">
+<link href="/tribune/static/files/login.5d3ee8692ca16f83f303d3fdf9821bd4.css" rel="stylesheet">
+<script type="text/javascript" src="/tribune/static/js/jquery-3.3.1.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="container-main container-pc">
+			<div class="main-content">
+				<div class="main">
+					<div class="main-tu">
+						<!---->
+						<div id="ad-div">
+							<div id="kp_box_286" data-pid="286">
+								<img src="/tribune/static/files/ad.png" height="450px">
+							</div>
+						</div>
+					</div>
+					<div class="main-login">
+						<!---->
+						<div class="main-code hide">
+							<div class="app-wrap">
+								<div id="appqr" class="app-code">
+									<span class="app-code-wrap"
+										title="https://passport.csdn.net/v1/api/app/scan/login/BdTrqQH8QqZtjQbT"><canvas
+											width="170" height="220" style="display: none;"></canvas>
+										<img alt="Scan me!"
+										src=""
+										style="display: block;"></span> <span class="fail-mark hide"></span>
+									<!---->
+									<!---->
+									<!---->
+								</div>
+								<span class="app-code-title"> 打开 <a target="_blank"
+									href="https://www.csdn.net/csdn-app?utm_source=click_passport">CSDN
+										APP</a> <em>在「我的」页面右上角打开扫一扫</em></span> <span class="app-code-title hide"><em
+									class="app-success-text">请在手机上「确认登录」</em> <a
+									href="https://passport.csdn.net/login" class="app-success-btn">返回二维码</a></span>
+								<!---->
+							</div>
+						</div>
+						
+						
+						<div class="main-process-login">
+							
+							<div rol="form" class="form-horizontal form-coustom">
+								<div class="form-group form-control-process">
+									<div class="tab-select col-xs-12 col-sm-12">
+										<a href="javascript:void(0)" id="tabOne" class="tab-one active" onclick="gettabone(this)">帐号登录</a> 
+										<a href="javascript:void(0)" id="tabTwo" class="tab-two" onclick="gettabone(this)">快速注册</a>
+									</div>
+								</div>
+								<form  method="post" id="loginform">
+									<div class="form-group">
+										<div
+											class="col-xs-12 col-sm-12 control-col-pos col-pr-no col-pl-no">
+											<!---->
+											<input type="text" placeholder="手机号" 
+												tabindex="1" name="phone" autocomplete="username"
+												class="form-control form-control-icon"> 
+										</div>
+									</div>
+									<div class="form-group">
+										<div
+											class="col-xs-12 col-sm-12 control-col-pos col-pr-no col-pl-no">
+											<input type="password" name="usepwd" placeholder="密码" pellcheck="false"  tabindex="2" autocomplete="current-password" translate="translate" class="form-control form-control-icon"> 
+										</div>
+									</div>
+									<!---->
+									<div class="form-group form-group-error">
+										<div id="js_err_dom" class="col-xs-12 col-sm-12 col-pl-no text-error" style="display:none"></div>
+									</div>
+									<div class="form-group form-group-link">
+										<div class="col-xs-12 col-sm-12 col-pr-no col-pl-no">
+											<a href="javascript:void(0)" target="_blank"
+												class="text-link">忘记密码</a>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="form-submit col-xs-12 col-sm-12 col-pr-no col-pl-no">
+											<a  class="btn btn-primary" onclick="login()">登录</a>
+										</div>
+									</div>
+									<!---->
+									<div class="form-group form-group-error">
+										<div id="js_err_dom" class="col-xs-12 col-sm-12 col-pl-no text-error hide"></div>
+									</div>
+									</form>
+								<form  method="post" id="registform" style="display:none">
+									<div class="form-group">
+										<div
+											class="col-xs-12 col-sm-12 control-col-pos col-pr-no col-pl-no">
+											<!---->
+											<input type="text" placeholder="电话号"  id="regphone"
+												tabindex="1" name="phone" autocomplete="username"
+												class="form-control form-control-icon"> 
+										</div>
+									</div>
+									<div class="form-group">
+										<div
+											class="col-xs-12 col-sm-12 control-col-pos col-pr-no col-pl-no">
+											<input type="password" name="usepwd" id="regpwd" placeholder="密码" pellcheck="false"  tabindex="2" autocomplete="current-password" translate="translate" class="form-control form-control-icon"> 
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-xs-12 col-sm-12 control-col-pos col-pr-no col-pl-no">
+										<input type="text" placeholder="6位数字验证码" id="code" name="code" validate="true" data-rule="['code']" autocomplete="new-password" class="form-control form-control-code">
+											<a class="btn btn-confirm btn-control" id="btn_code" onclick="getcodes()">获取验证码</a>
+										</div>
+									</div>
+									<!---->
+									<div class="form-group form-group-error">
+										<div id="re_err_dom" class="col-xs-12 col-sm-12 col-pl-no text-error" style="display:none"></div>
+									</div>
+									
+									<div class="form-group">
+										<div class="form-submit col-xs-12 col-sm-12 col-pr-no col-pl-no">
+											<a  class="btn btn-primary" onclick="userReg()">注册</a>
+										</div>
+									</div>
+									<!---->
+									</form>
+							
+							</div>
+							
+							
+							
+						</div>
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+ function login(){
+		$.ajax({
+			url:"zxhuserinfo/userlogin",
+			data:$("#loginform").serialize(),
+			type:"post",
+			success:function(data){
+				alert(data);
+				if(data!=0){
+					$("#js_err_dom").show();
+					if(data==1){
+						$("#js_err_dom").html("该手机没有注册");
+					}else{
+						$("#js_err_dom").html("密码错误");
+					}
+					
+				}else{
+					window.location.href="/tribune/person";
+				}
+			}
+		});
+	}
+	function gettabone(obj){
+		var id=$(obj).attr("id");
+		if(id=="tabOne"){
+			$("#tabOne").attr("class","tab-one active");
+			$("#tabTwo").attr("class","tab-two");
+			$("#loginform").show();
+			$("#registform").hide();
+		}else{
+			$("#tabOne").attr("class","tab-one ");
+			$("#tabTwo").attr("class","tab-two active");
+			$("#loginform").hide();
+			$("#registform").show();
+			
+		}
+	}
+	var code="";
+function getcodes(){
+	var phones="";
+	if($("#regphone").val()==""){
+		//$("#regphone").attr("style","border:red");
+		$("#re_err_dom").show();
+		$("#re_err_dom").html("电话号不能为空");
+		return ;
+	}else if(!(/^1[34578]\d{9}$/.test($("#regphone").val()))){
+		$("#re_err_dom").show();
+		$("#re_err_dom").html("电话号格式不正确");
+		return;
+	}
+	$.ajax({
+		url:"zxhuserinfo/getMsgs",
+		data:{"phone":$("#regphone").val()},
+		type:"post",
+		success:function(data){
+			console.log(data);
+			if(data=="手机格式不对"){
+				code="";
+				$("#re_err_dom").show();
+				$("#re_err_dom").html("电话号格式不正确");
+			}else if(data=="发送失败"){
+				code="";
+				$("#re_err_dom").show();
+				$("#re_err_dom").html("请在稍后重试");
+			}
+			code=data;
+		}
+	});
+	var mydate= new Date();//获取当前时间
+    mydate.setMinutes(mydate.getMinutes()+1); //当前时间加1分钟
+    var end_time = new Date(mydate).getTime();//月份是实际月份-1
+    var sys_second = (end_time-new Date().getTime())/1000;
+    var timer = setInterval(function(){
+          if (sys_second > 1) {
+              sys_second -= 1;
+              var second = Math.floor(sys_second % 60);
+              $("#btn_code").attr("disabled","true");//添加disabled属性
+              $("#btn_code").css("color","gray");
+              $("#btn_code").html(second+"s后重新获取验证码");
+
+          } else { 
+              $("#btn_code").removeAttr("disabled");//移除disabled属性
+              $("#btn_code").css("color","black");
+              $("#btn_code").html("获取验证码");
+              clearInterval(timer);//清楚定时器
+          }
+      }, 1000);
+    }
+    function userReg(){
+    	var pushcode=$("#code").val();
+    	var regpwd=$("#regpwd").val();
+    	if(pushcode==""){
+    		$("#re_err_dom").show();
+			$("#re_err_dom").html("验证码为空");
+    		return;
+    	}else if(regpwd==""){ 
+    		$("#re_err_dom").show();
+			$("#re_err_dom").html("密码为空");
+    		return;
+    	}
+    	if(code==pushcode){
+    	$.ajax({
+    		url:"zxhuserinfo/userReg",
+    		data:$("#registform").serialize(),
+    		type:"post",
+    		success:function(data){
+    			alert(data);
+    		}
+    	});
+    	}else{
+    		$("#re_err_dom").show();
+			$("#re_err_dom").html("验证码错误");
+    	}
+    }
+</script>	
+
+</body>
+</html>

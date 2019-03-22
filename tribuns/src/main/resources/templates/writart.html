@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta charset="utf-8">
+ <title>写博客 </title>
+ <link rel="stylesheet" href="/tribune/static/css/bootstrap.css">
+ <link href="/tribune/static/editor/css/editormd.min.css" rel="stylesheet" />
+ <link href="/tribune/static/files/app-f183ad6308.css" rel="stylesheet">
+ <link href="/tribune/static/css/jquery.richUI.min.css" rel="stylesheet">
+ <script src="/tribune/static/js/jquery-3.3.1.js"></script>
+ <script src="/tribune/static/js/bootstrap.js"></script>
+ <script src="/tribune/static/js/jquery.browser.min.js"></script>
+ <script src="/tribune/static/js/jquery.richUI.min.js"></script>
+ <script src="/tribune/static/editor/editormd.min.js"></script>	
+ <script src="/tribune/static/editor/lib/marked.min.js"></script>
+ <script src="/tribune/static/editor/lib/prettify.min.js"></script>
+ <script src="/tribune/static/editor/lib/raphael.min.js"></script>
+ <script src="/tribune/static/editor/lib/underscore.min.js"></script>
+ <script src="/tribune/static/editor/lib/sequence-diagram.min.js"></script>
+ <script src="/tribune/static/editor/lib/flowchart.min.js"></script>
+ <script src="/tribune/static/editor/lib/jquery.flowchart.min.js"></script>
+ <script src="/tribune/static/editor/editormd.min.js"></script>	
+ 
+ <script type="text/javascript" src="/tribune/static/js/iradio.js"></script>
+</head>
+
+
+<body>
+
+<div id="layout" class="editor">
+		<div class="layout__panel layout__panel--articletitle-bar"
+			style="width: 100%; height: 56px;">
+			<div class="article-bar flex flex--row">
+				<div class="article-bar__input-box">
+					<input maxlength="100" placeholder="输入文章标题"
+					id="arttitle"	class="article-bar__title article-bar__title--input text-input" onkeyup="checkLen2(this)">
+					<span class="article-bar__number"><span class="" id="titlecount">0</span>/100</span>
+				</div>
+				<div class="article-bar__user-box flex flex--row">
+					<button class="btn btn-publish" id="push">发布文章</button>
+					<div class="user-box">
+						<div class="btn-userinfo">
+							<div class="avatar-box">
+								<a href="person">
+								
+								<img src="/tribune/static/files/2_qq_41594083.jpg"
+									alt="" width="32" height="32"
+									class="img-user-avatar">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="test-editormd">
+        <textarea id="en"></textarea>
+   		</div>
+   		<div>
+  		 文章类型：<select name="arttype" id="mySelect2">
+  		 		<option value="0">原创</option>
+  		 		<option value="1">转载</option>
+  		 		<option value="2">翻译</option>
+  		 	   </select>
+  		博客类型：<select id="blogtype" name="blogtype">
+  					
+  			   </select>
+  		</div>
+  		<div style="margin-top:20px;">
+  		是否公开：
+  		<input name="issecret" value="0" type="radio" lab="是" checked="checked"/>
+		<input name="issecret" value="1" type="radio" lab="否" />
+  		</div>	
+</div>
+
+</body>
+<script type="text/javascript">
+$("input[name='issecret']").richradio();
+$("#mySelect2").richselect();
+var testEditor;
+$(function () {
+    testEditor = editormd("test-editormd", {
+        width: "100%",
+        height: 480,
+        path: '/tribune/static/editor',
+        markdown: "",
+        codeFold: true,
+        //syncScrolling : false,
+        saveHTMLToTextarea: true,    // 保存 HTML 到 Textarea
+        searchReplace: true,
+        //watch : false,                // 关闭实时预览
+        htmlDecode: "style,script,iframe|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启    
+        toolbar  : true,             //关闭工具栏
+        //previewCodeHighlight : false, // 关闭预览 HTML 的代码块高亮，默认开启
+        //emoji: true,
+        taskList: true,
+        tocm: true,        			 // Using [TOCM]
+        tex: true,                	// 开启科学公式TeX语言支持，默认关闭
+        flowChart: true,             // 开启流程图支持，默认关闭
+        sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+        //dialogLockScreen : false,  // 设置弹出层对话框不锁屏，全局通用，默认为true
+        //dialogShowMask : false,    // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
+        //dialogDraggable : false,   // 设置弹出层对话框不可拖动，全局通用，默认为true
+        //dialogMaskOpacity : 0.4,   // 设置透明遮罩层的透明度，全局通用，默认值为0.1
+        //dialogMaskBgColor : "#000",// 设置透明遮罩层的背景颜色，全局通用，默认为#fff
+        imageUpload: true,
+        imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+        imageUploadURL: "file/fileupload",
+        onload: function () {
+            //console.log('onload', this);
+            //this.fullscreen();
+            //this.unwatch();
+            //this.watch().fullscreen();
+            //this.setMarkdown("#PHP");
+            //this.width("100%");
+            //this.height(480);
+            //this.resize("100%", 640);
+        	$.ajax({
+        		url:"zxhblogtype/querytype",
+        		type:"post",
+        		success:function(data){
+        			//alert(data);
+        			console.log(data);
+        			$.each(data,function(i,item){
+        				$("#blogtype").append("<option value="+item.typeid+">"+item.typeName+"</option>");
+        			});
+        			$("#blogtype").richselect();
+        		}
+        	});
+        }
+    });
+});
+function checkLen2(e){
+	e.value = e.value.substring(0,100);  
+    var curr = e.value.length;
+    document.getElementById("titlecount").innerHTML = curr.toString();
+}
+</script>
+<script type="text/javascript">
+	$("#push").click(function(){
+		var title=$("#arttitle").val();
+		var content=$("#en").val();
+		var userid="qtx_39019";
+		var artType=$("#mySelect2").val();
+		var blogType=$("#blogtype").val();
+		var issecret=$('input[name="issecret"]:checked').val();
+		if(artType==null){
+			alert('请选择文章类型');
+			return;
+		}
+		if(blogType==null){
+			alert('请选择博客类型');
+			return;
+		}
+		//alert(title+"____"+content+"___"+userid+"____"+artType+"_____"+blogType+"___"+issecret);
+		$.ajax({
+			url:"zxhblog/insertblog",
+			data:{"blogTitle":title,"blogContent":content,"artType":artType,"blogType":blogType,"userId":userid,"issecret":issecret},
+			type:"post",
+			success:function(data){
+				if(data==1){
+					alert("发布成功");
+				}else{
+					alert("存在敏感字符");
+				}
+			}
+		});
+		
+	});
+</script>
+
+</html>
