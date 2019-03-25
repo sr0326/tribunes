@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.sr.dao.DownResourceDao">
-	<!-- public List<Map<String,Object>> queryFileById(String uid); -->
-	<select id="queryFileById" resultType="Map">
-		select dr.downid,df.fileId,df.fileName,df.downtypeid,
-		df.fileDis,df.need_score,ui.userId,ui.nickname,ui.curjob,
-		dr.downtime,dt.downtypeid,dt.downtypeName,ui.integral 
-		from downresource dr left join downfile df
-		on dr.fileid=df.fileId left join userinfo ui
-		on ui.userId=dr.userid left join downtype dt
-		on dt.downtypeid=df.downtypeid where dr.userid=#{uid}
+	<!-- public List<Map<String,Object>> queryDownscoreById(String uid); -->
+	<select id="queryDownscoreById" resultType="Map">
+		select dr.downid,df.fileId,df.fileName,df.need_score,dr.downtime,ui.integral,
+		dt.downtypeName,ui.nickname from downresource dr left join downfile df on dr.fileid=df.fileId 
+		left join userinfo ui on dr.userid=ui.userId left join downtype dt on 
+		df.downtypeid=dt.downtypeid where dr.userid=#{uid} and df.upfilestate=1
+	</select>
+	
+	<!-- public List<Map<String,Object>> queryUpscoreById(String uid); -->
+	<select id="queryUpscoreById" resultType="Map">
+		select df.fileId,df.fileName,df.need_score,df.uploadtime,
+		ui.integral from downfile df,userinfo ui where 
+		ui.userId=df.userid and df.userid=#{uid} and df.upfilestate=1
 	</select>
 </mapper>

@@ -1922,7 +1922,7 @@
 				<a th:href="@{/downfilec/queryDownFile}" class="current">下载首页</a>
 				<a th:href="@{/downfilec/myResources(userid=${session.userintro.userId})}">我的资源</a> 
 				<a class="nav_upload  " th:href="@{/downtypec/queryTypeAll}">上传资源赚积分</a>
-				<a class=" " href="https://download.csdn.net/my/favs">我的收藏</a>
+				<a class=" " th:href="@{/collectdownc/queryConectUid(userid=${session.userintro.userId})}">我的收藏</a>
 			</div>
 		</div>
 	</div>

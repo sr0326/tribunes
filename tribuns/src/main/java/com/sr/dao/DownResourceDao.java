@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface DownResourceDao{
 
 	//根据用户ID查询下载文件信息
-	public List<Map<String,Object>> queryFileById(String uid);
-	
-	
+	public List<Map<String,Object>> queryDownscoreById(String uid);
+	//根据用户ID查询上传文件信息
+	public List<Map<String,Object>> queryUpscoreById(String uid);
 }

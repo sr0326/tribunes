@@ -14,8 +14,12 @@ public class DownResourceService {
 	@Autowired
 	DownResourceDao drd;
 	
-	public List<Map<String,Object>> queryFileById(String uid){
-		return drd.queryFileById(uid);
+	public List<Map<String,Object>> queryUpscoreById(String uid){
+		return drd.queryUpscoreById(uid);
+	}
+	
+	public List<Map<String,Object>> queryDownscoreById(String uid){
+		return drd.queryDownscoreById(uid);
 	}
 
 }

@@ -117,6 +117,7 @@ public class DownFileController {
 		//根据类型查询资源
 		List<DownFile> bydowntypeid = dfs.queryDownFile(downtypeid, null,fileid,null,null,1);
 		model.addAttribute("bydowntypeid", bydowntypeid);
+		System.out.println(bydowntypeid);
 		//根据资源ID查询作者信息
 		DownFile queryUser = dfs.queryUser(fileid);
 		model.addAttribute("queryUser", queryUser);

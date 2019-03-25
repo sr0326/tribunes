@@ -50,7 +50,7 @@
 	
 	<!-- public List<DownFile> queryDownFile(Integer downtypeid,String fileName,Integer fileid,Integer userid,Integer filetype,Integer upfilestate); -->
 	<select id="queryDownFile" resultMap="getUserMap">
-		select df.*,ui.* from downfile df,userinfo ui where 
+		select df.*,ui.*,df.fileDis from downfile df,userinfo ui where 
 		ui.userId=df.userid
 		<if test="param1 != null and param1 != ''">
 			and df.downtypeid=#{param1}
@@ -74,7 +74,7 @@
 	
 	<!-- public DownFile queryById(Integer fileid); -->
 	<select id="queryById" resultMap="gettypeMap">
-		select df.*,dt.* from downfile df,downtype dt where
+		select df.*,dt.*,df.fileDis from downfile df,downtype dt where
 		dt.downtypeid=df.downtypeid and df.upfilestate=1 and df.fileId=#{param1}
 	</select>
 	

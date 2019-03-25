@@ -1,5 +1,6 @@
 package com.sr.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,8 +25,13 @@ public class DownResourceController {
 	 */
 	@RequestMapping("queryFileById")
 	@ResponseBody
-	public List<Map<String,Object>> queryFileById(String uid){
-		return drs.queryFileById(uid);
+	public Map<String,Object> queryFileById(String uid){
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<Map<String, Object>> queryDownscore = drs.queryDownscoreById(uid);
+		List<Map<String, Object>> queryUpscore = drs.queryUpscoreById(uid);
+		map.put("queryDownscore", queryDownscore);
+		map.put("queryUpscore", queryUpscore);
+		return map;
 	}
 
 }

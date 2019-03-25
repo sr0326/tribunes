@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.sr.dao.CollectDownFileDao">
+	<!-- public int collectFIle(Integer fileid,String uid); -->
+	<insert id="collectFIle">
+		insert into collectdownfile(collectdownid,fileid,userid,cdstate) value(null,#{param1},#{param2},1)
+	</insert>
+	<!-- public List<Map<String,Object>> queryCollectDown(String userid); -->
+	<select id="queryCollectDown" resultType="Map">
+		select cdf.collectdownid,cdf.fileid,cdf.userid collectuserid,
+		cdf.cdstate,df.fileName,df.userid fileuserid,df.uploadtime,
+		df.fileDis,df.need_score,df.downtypeid from collectdownfile cdf,downfile df 
+		where cdf.cdstate=1 and cdf.fileid=df.fileId and df.upfilestate=1 and 
+		cdf.userid=#{uid}
+	</select>
+	
+	<!-- public int closeConects(Integer collectdownid); -->
+	<update id="closeConects" parameterType="Integer">
+		UPDATE collectdownfile set cdstate=0 where collectdownid=#{cdid}
+	</update>
+</mapper>

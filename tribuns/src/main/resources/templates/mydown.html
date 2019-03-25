@@ -1894,8 +1894,8 @@
 										href="https://www.csdn.net/nav/watchers" target="_blank">我的关注</a>
 								</div>
 								<div>
-									<i class="pull_icon pull_icon2"></i><a
-										href="https://i.csdn.net/#/uc/favorite-list" target="_blank">我的收藏</a>
+									<i class="pull_icon pull_icon2"></i>
+									<a href="https://i.csdn.net/#/uc/favorite-list" target="_blank">我的收藏</a>
 								</div>
 								<div>
 									<i class="pull_icon pull_icon4"></i><a
@@ -1957,7 +1957,7 @@
 				<a th:href="@{/downfilec/queryDownFile}" class=" ">下载首页</a>
 				<a th:href="@{/downfilec/myResources(userid=${session.userintro.userId})}" class="current">我的资源</a> 
 				<a class=" " th:href="@{/downtypec/queryTypeAll}">上传资源赚积分</a>
-				<a class=" " href="https://download.csdn.net/my/favs">我的收藏</a>
+				<a class=" " th:href="@{/collectdownc/queryConectUid(userid=${session.userintro.userId})}">我的收藏</a>
 			</div>
 			<div class="search-download">
 				<a href="https://download.csdn.net/help" class="help"><i
@@ -2021,7 +2021,7 @@
 					function contexts(data){
 						if(data != ""){
 							tablevip +="<div class='item uresource'><div class='selector-box'>";
-                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' id='findalls' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
+                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
                             tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='finddai()' class='btn-selector ' target='_self'>待审核</a>";
                             tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findyi()' class='btn-selector ' target='_self'>已通过</a>";
                             tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findno()' class='btn-selector ' target='_self'>未通过</a></div>";
@@ -2040,7 +2040,7 @@
 							tablevip +="</div>";
 						}else{
 							tablevip +="<div class='item uresource'><div class='selector-box'>";
-                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' id='findalls' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
+                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
                             tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='finddai()' class='btn-selector ' target='_self'>待审核</a>";
                             tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findyi()' class='btn-selector ' target='_self'>已通过</a>";
                             tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findno()' class='btn-selector ' target='_self'>未通过</a></div>";
@@ -2064,7 +2064,7 @@
 							success:function(data){
 								if(data != ""){
 									tablevip +="<div class='item uresource'><div class='selector-box'>";
-		                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' id='findalls' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
+		                            tablevip +="<a style='font-weight:bold;' href='javascript:void(0);' class='btn-selector active' onclick='findall()' target='_self'>全部</a>";
 		                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='finddai()' class='btn-selector ' target='_self'>待审核</a>";
 		                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findyi()' class='btn-selector ' target='_self'>已通过</a>";
 		                            tablevip +="<a style='font-weight:bold;margin-left:20px;' href='javascript:void(0);' onclick='findno()' class='btn-selector ' target='_self'>未通过</a></div>";
@@ -2072,7 +2072,7 @@
 										if(data[i].upfilestate == 4 ){
 											data[i].upfilestate = "已删除";
 											tablevip +="<ul><li><div class='card clearfix'><div class='img rar1'>";
-			                                tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3><a onclick='statefour()' href='javascript:void(0);'>"+data[i].fileName+"</a></h3>";
+			                                tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3><a onclick='statefours()'>"+data[i].fileName+"</a></h3>";
 										}else{
 											tablevip +="<ul><li><div class='card clearfix'><div class='img rar1'>";
 			                                tablevip +="<a target='_blank'><img src='//csdnimg.cn/release/download/old_static/images/minetype/unkonw.svg'></a></div><div class='content'><h3><a href='/tribune/downfilec/queryById?fileid="+data[i].fileId+"&downtypeid="+data[i].downtypeid+"&userid="+data[i].userid+"'>"+data[i].fileName+"</a></h3>";
@@ -2085,7 +2085,7 @@
 									tablevip +="</div>";
 								}else{
 									tablevip +="<dl><dt class='empty_icons'><img src='../mydown_files/empty_icon.png' alt='' title='' class='empty_icon'></dt>";
-									tablevip +="<dd class='empty'>提示：你还没有上传资源~<a href='javascript:void(0);'>现在去上传</a></dd></dl>";
+									tablevip +="<dd class='empty'>提示：你还没有上传资源~<a href='/tribune/downtypec/queryTypeAll'>现在去上传</a></dd></dl>";
 								}
 								$("#vip").html(tablevip);
 							}
@@ -2113,8 +2113,9 @@
 							}
 						});
 					}
-					function statefour(){
+					function statefours(){
 						alert("已删除，不可以查看！");
+						myuploads();
 					}
 					function finddai(){
 						tablevip = "";
@@ -2148,16 +2149,32 @@
 							url:'/tribune/downresourcec/queryFileById',
 							data:{"uid":uid},
 							success:function(data){
-								if(data != null){
-									tablevip +="<table><thead  style='font-size:18px;font-weight:bold;'><tr><td style='width:180px;'>积分</td><td style='width:180px;'>时间</td><td style='width:180px;'>下载资源</td><td>剩余积分</td></tr></thead>";
-									for (var i = 0; i < data.length; i++) { 
-										tablevip +="<tbody><tr><td>"+data[i].need_score+"</td><td>"+data[i].downtime+"</td><td>"+data[i].fileName+"</td><td>"+data[i].integral+"</td></tr></tbody>";
+								var downscore = data.queryDownscore;
+								var upscore = data.queryUpscore;
+								if(downscore != "" && upscore != ""){
+									tablevip +="<table class='table' style='text-align:center;'><thead style='font-size:18px;background-color:lightgray;'><tr><td style='width:180px;'>积分</td><td style='width:180px;'>时间</td><td style='width:180px;'>资源名称</td><td>剩余积分</td><td>操作</td></tr></thead>";
+									for (var i = 0; i < upscore.length; i++) { 
+										tablevip +="<tbody><tr><td>"+upscore[i].need_score+"</td><td>"+upscore[i].uploadtime+"</td><td>"+upscore[i].fileName+"</td><td>"+upscore[i].integral+"</td><td>上传</td></tr></tbody>";
+									}
+									for (var i = 0; i < downscore.length; i++) { 
+										tablevip +="<tbody><tr><td>"+downscore[i].need_score+"</td><td>"+downscore[i].downtime+"</td><td>"+downscore[i].fileName+"</td><td>"+downscore[i].integral+"</td><td>下载</td></tr></tbody>";
+									}
+									tablevip +="</table>";
+								}else if(downscore == "" && upscore != ""){
+									tablevip +="<table class='table' style='text-align:center;'><thead style='font-size:18px;background-color:lightgray;'><tr><td style='width:180px;'>积分</td><td style='width:180px;'>时间</td><td style='width:180px;'>资源名称</td><td>剩余积分</td><td>操作</td></tr></thead>";
+									for (var i = 0; i < upscore.length; i++) { 
+										tablevip +="<tbody><tr><td>"+upscore[i].need_score+"</td><td>"+upscore[i].uploadime+"</td><td>"+upscore[i].fileName+"</td><td>"+upscore[i].integral+"</td><td>上传</td></tr></tbody>";
+									}
+									tablevip +="</table>";
+								}else if(downscore != "" && upscore == ""){
+									tablevip +="<table class='table' style='text-align:center;'><thead style='font-size:18px;background-color:lightgray;'><tr><td style='width:180px;'>积分</td><td style='width:180px;'>时间</td><td style='width:180px;'>资源名称</td><td>剩余积分</td><td>操作</td></tr></thead>";
+									for (var i = 0; i < downscore.length; i++) { 
+										tablevip +="<tbody><tr><td>"+downscore[i].need_score+"</td><td>"+downscore[i].downtime+"</td><td>"+downscore[i].fileName+"</td><td>"+downscore[i].integral+"</td><td>下载</td></tr></tbody>";
 									}
 									tablevip +="</table>";
 								}else{
-									tablevip +="<table><thead  style='font-size:18px;font-weight:bold;'><tr><td style='width:180px;'>积分</td><td style='width:180px;'>时间</td><td style='width:180px;'>下载资源</td></tr></thead>";
-									tablevip +="<tbody><tr><td></td><td></td><td></td></tr>";
-									tablevip +="</tbody></table>";
+									tablevip +="<dl><dt class='empty_icons'><img src='//csdnimg.cn/release/download/images/empty_icon.png?/v=201812141445' alt='' title='' class='empty_icon'></dt>";
+									tablevip +="<dd class='empty'>提示：<span style='color:red;'>你还没有如何积分动向哦~</span></dd></dl>";
 								}
 								$("#vip").html(tablevip);
 							}
@@ -2175,15 +2192,15 @@
 							url:'/tribune/downresourcec/queryFileById',
 							data:{"uid":uid},
 							success:function(data){
-								if(data != 1){
-									tablevip +="<table><thead style='font-size:18px;font-weight:bold;'><tr><td style='width:150px;'>资源名称</td><td style='width:150px;'>资源类型</td><td style='width:150px;'>作者</td><td style='width:150px;'>下载时间</td><td style='width:150px;'>所需积分</td></tr></thead>";
-									for (var i = 0; i < data.length; i++) {
-										tablevip +="<tbody><tr><td>"+data[i].fileName+"</td><td>"+data[i].downtypeName+"</td><td>"+data[i].nickname+"</td><td>"+data[i].downtime+"</td><td>"+data[i].need_score+"</td></tr></tbody>";
-									}	
+								if(data.queryDownscore != ""){
+									tablevip +="<table class='table' style='text-align:center;'><thead style='font-size:18px;background-color:lightgray;'><tr><td style='width:150px;'>资源名称</td><td style='width:150px;'>资源类型</td><td style='width:150px;'>作者</td><td style='width:150px;'>下载时间</td><td style='width:150px;'>所需积分</td></tr></thead>";
+									for (var i = 0; i < data.queryDownscore.length; i++) { 
+										tablevip +="<tbody><tr><td>"+data.queryDownscore[i].fileName+"</td><td>"+data.queryDownscore[i].downtypeName+"</td><td>"+data.queryDownscore[i].nickname+"</td><td>"+data.queryDownscore[i].downtime+"</td><td>"+data.queryDownscore[i].integral+"</td></tr></tbody>";
+									}
 									tablevip +="</table>";
 								}else{
-									tablevip +="<dl><dt class='empty_icons'><img src='//csdnimg.cn/release/download/images/empty_icon.png?/v=201812141445' alt='' title='' class='empty_icon'></dt>";
-									tablevip +="<dd class='empty'>提示：你还没有下载资源~</dd></dl>";
+									tablevip +="<dl><dt class='empty_icons'><img src='/tribuns/static/mydown_files/empty_icon.png' alt='' title='' class='empty_icon'></dt>";
+									tablevip +="<dd class='empty'>提示：<span style='color:red;'>你还没有下载资源~</span></dd></dl>";
 								}
 								$("#vip").html(tablevip);
 							}
@@ -2196,9 +2213,37 @@
 						$("#myscore").prop('class','');
 						$("#mydownfiles").prop('class','');
 						$("#myfavorite").prop('class','cur');
-						tablevip +="<dl><dt class='empty_icons'><img src='//csdnimg.cn/release/download/images/empty_icon.png?/v=201812141445' alt='' title='' class='empty_icon'></dt>";
-						tablevip +="<dd class='empty'>提示：你还没有收藏过资源哦~</dd></dl>";
-						$("#vip").html(tablevip);
+						$.ajax({
+							url:'/tribune/collectdownc/queryConectUid',
+							data:{"userid":uid},
+							success:function(data){
+								if(data != ""){
+									for (var i = 0; i < data.length; i++) {
+										tablevip +="<div class='item uresource'><ul><li><div class='card clearfix'><div class='img rar1'><a href='https://download.csdn.net/detail/c_time/11051694' target='_blank'>";
+										tablevip +="<img src='/tribune/statuc/mydown_files/zip.svg'></a><input type='hidden' value='"+data[i].collectdownid+"' id='cidss' ></div><div class='content'><h3><a target='_blank' href='/tribune/downfilec/queryById?fileid="+data[i].fileid+"&downtypeid="+data[i].downtypeid+"&userid="+data[i].collectuserid+"'>"+data[i].fileName+" </a>";
+										tablevip +="</h3><p class='brief'>"+data[i].fileDis+"</p><div class='date'><label>上传时间：</label>"+data[i].uploadtime+"</div>";
+										tablevip +="<div class='score'><label>所需积分/C币：</label>"+data[i].need_score+"</div><div class='flag'><a onclick='closeConect()' id='clo' href='javascript:void(0);'>取消收藏</a>";
+										tablevip +="</div></div><div class='content' style='margin-left:42px;display: none' id='score_log_11051694'></div></div></li></ul><div class='page_nav'></div></div>";
+									}
+								}else{
+									tablevip +="<dl><dt class='empty_icons'><img src='//csdnimg.cn/release/download/images/empty_icon.png?/v=201812141445' alt='' title='' class='empty_icon'></dt>";
+									tablevip +="<dd class='empty'>提示：<span style='color:red;'>你还没有收藏过资源哦~</span></dd></dl>";
+								}
+								$("#vip").html(tablevip);
+							}
+						});
+					}
+					function closeConect(){
+						var collectdownid = $("#cidss").val();
+						$.ajax({
+							url:'/tribune/collectdownc/closeCon',
+							data:{"collectdownid":collectdownid},
+							success:function(data){
+								if(data == 1){
+									myfavorite();
+								}
+							}
+						});
 					}
 					//初始化
 					$(function(){
